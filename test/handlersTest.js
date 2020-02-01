@@ -26,3 +26,20 @@ describe('METHOD NOT ALLOWED', () => {
       .expect('Method Not Allowed', done);
   });
 });
+
+describe('GET Home page', () => {
+  it('should get the home page / path', done => {
+    request(app.serve.bind(app))
+      .get('/')
+      .set('Accept', '*/*')
+      .expect(200)
+      .expect('Content-Type', 'text/html', done);
+  });
+  it('should get the path /css/homeStyles.css', done => {
+    request(App)
+      .get('/css/index.css')
+      .set('Accept', '*/*')
+      .expect(200)
+      .expect('Content-Type', 'text/css', done);
+  });
+});

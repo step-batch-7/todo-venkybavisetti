@@ -6,3 +6,7 @@ launch todo server
 --Done--        > add handlers for file not found and method not found
 --Done--    > create public folder for the environment setup
 --Done--    > create server file for the lancing the server
+
+create home page for todo
+    > home page in the public/html folder
+    > home page styles in the public/css folder
