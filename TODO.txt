@@ -1,0 +1,8 @@
+launch todo server 
+    > create package.json file
+    > add eslint rules
+    > add mocha and sinon to the package.json for testing
+    > create lib folder 
+        > add handlers for file not found and method not found
+    > create public folder for the environment setup
+    > create server file for the lancing the server
