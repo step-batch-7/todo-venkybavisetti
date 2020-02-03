@@ -37,4 +37,7 @@ body {
 .todoBox {
   background-color: rgb(151, 144, 144);
   height: 50px;
+  margin: 2px;
+  border-radius: 5px;
+  padding: 5px;
 }
