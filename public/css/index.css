@@ -27,7 +27,7 @@ body {
   color: white;
 }
 
-.todoList {
+#todoList {
   border: 1px solid black;
   height: 590px;
   margin-top: 5px;
