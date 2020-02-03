@@ -1,3 +1,40 @@
-h1 {
-  text-align: center;
+body {
+  font-family: sans-serif;
+}
+
+.header {
+  background-color: black;
+  padding: 30px 40px;
+  color: white;
+}
+#title {
+  width: 75%;
+  padding: 10px;
+  font-size: 16px;
+  border: 0px;
+}
+#submit {
+  width: 20%;
+  padding: 10px;
+  font-size: 16px;
+  background-color: lightblue;
+  border: 0px;
+  cursor: pointer;
+}
+
+#submit:hover {
+  background-color: blue;
+  color: white;
+}
+
+.todoList {
+  border: 1px solid black;
+  height: 590px;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+
+.todoBox {
+  background-color: rgb(151, 144, 144);
+  height: 50px;
 }
