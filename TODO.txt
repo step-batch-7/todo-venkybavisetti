@@ -1,3 +1,6 @@
+data structure is array of objects
+example :- [{title:'something',completedTasks :[],unCompletedTasks:[]}]
+
 launch todo server 
 --Done--    > create package.json file
 --Done--    > add eslint rules
@@ -8,5 +11,8 @@ launch todo server
 --Done--    > create server file for the lancing the server
 
 create home page for todo
-    > home page in the public/html folder
-    > home page styles in the public/css folder
+--Done--    > home page in the public/html folder
+--Done--    > home page styles in the public/css folder
+
+>add titles deletion
+>add titles to add tasks

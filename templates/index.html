@@ -2,14 +2,13 @@
   <head>
     <title>TODO</title>
     <link rel="stylesheet" href="css/index.css" />
+    <script src="js/index.js"></script>
   </head>
   <body>
     <div class="header">
       <h2 style="text-align: center;">To Do List</h2>
-      <form action="addTitle" method="POST">
-        <input type="text" name="title" id="title" placeholder="Title..." />
-        <button id="submit">Add</button>
-      </form>
+      <input type="text" name="title" id="title" placeholder="Title..." />
+      <button id="submit" onclick="addTitle()">Add</button>
     </div>
     <div class="todoList">__todoList__</div>
   </body>

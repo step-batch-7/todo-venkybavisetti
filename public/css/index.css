@@ -32,6 +32,7 @@ body {
   height: 590px;
   margin-top: 5px;
   border-radius: 5px;
+  overflow: scroll;
 }
 
 .todoBox {
