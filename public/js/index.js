@@ -1,8 +1,8 @@
-const postHttpMsg = function(url, callback, newTitle) {
+const postHttpMsg = function(url, postCallback, newTitle) {
   const req = new XMLHttpRequest();
   req.onload = function() {
     if (this.status == '200') {
-      callback(this.responseText);
+      postCallback(this.responseText);
     }
   };
   req.open('POST', url);
@@ -10,19 +10,17 @@ const postHttpMsg = function(url, callback, newTitle) {
   req.send(newTitle);
 };
 
-const callback = function(text) {
+const postCallback = function(text) {
   const container = document.getElementById('todoList');
-  console.log(container);
-  const json = JSON.parse(text);
-  const task = document.createElement('div');
-  task.classList.add('todoBox');
-  task.textContent = json.title;
-  container.insertBefore(task, container.childNodes[0]);
+  container.innerHTML = '';
+  container.innerHTML = text;
 };
 
 const addTitle = function() {
   const newTitleBox = document.querySelector('#title');
   const newTitle = newTitleBox.value;
   newTitleBox.value = '';
-  postHttpMsg('/addTitle', callback, `title=${newTitle}`);
+  postHttpMsg('/addTitle', postCallback, `title=${newTitle}`);
 };
+
+const displayHide = function() {};
