@@ -33,7 +33,11 @@ const createTodoTasks = function(task) {
 
 const createLists = function(task) {
   const titlesList = document.createElement('li');
-  titlesList.innerHTML = `${task.title}`;
+  titlesList.innerHTML = `${task.title} 
+  <img src="https://img.icons8.com/color/48/000000/delete-forever.png" alt = 'x' class = 'close' onclick = 'removeTodoTitle()' height ="17px"/>`;
+  titlesList.id = task.id;
+  titlesList.onclick = particularTask;
+  titlesList.classList.add('itemsDisplay');
   return titlesList;
 };
 
@@ -56,6 +60,13 @@ const generateTodoTasks = function(text) {
   generateTitlesContainer(arrayOfObjects);
 };
 
+const duplicate = function(text) {
+  const task = JSON.parse(text);
+  const todoTitleContainer = document.getElementById('todoList');
+  todoTitleContainer.innerHTML = '';
+  todoTitleContainer.appendChild(createTodoTasks(task));
+};
+
 const addTitle = function() {
   const newTitleBox = document.querySelector('#title');
   const newTitle = newTitleBox.value;
@@ -67,6 +78,11 @@ const removeTodoTitle = function() {
   const [, todoBox] = event.path;
   const todoBoxId = todoBox.id;
   postHttpMsg('/removeTodoBox', generateTodoTasks, `id=${todoBoxId}`);
+};
+
+const particularTask = function() {
+  const titleId = event.target.id;
+  postHttpMsg('/particularTask', duplicate, `id=${titleId}`);
 };
 
 const loadHomePage = function() {
