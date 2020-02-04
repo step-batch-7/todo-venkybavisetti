@@ -26,21 +26,35 @@ body {
   background-color: blue;
   color: white;
 }
-
-#todoList {
-  border: 1px solid black;
+#TodoContainer {
   height: 590px;
-  margin-top: 5px;
   border-radius: 5px;
+  border: 2px solid black;
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#smartLook {
+  height: 590px;
+  width: 20%;
+  border-radius: 3px;
+  border-right: 1px solid black;
+}
+#todoList {
+  height: 590px;
+  width: 80%;
+  border-radius: 3px;
   overflow: scroll;
+  border-left: 1px solid black;
 }
 
 .todoBox {
   background-color: rgb(151, 144, 144);
-  height: 50px;
+  height: 100px;
   margin: 2px;
   border-radius: 5px;
-  padding: 5px;
+  padding: 4px;
   position: relative;
 }
 
@@ -53,4 +67,30 @@ body {
 
 .todoBoxHeader {
   border-bottom: 1px solid grey;
+}
+
+.text1 {
+  height: 100px;
+  color: white;
+  font-size: 60px;
+  letter-spacing: 6px;
+  margin-bottom: 20px;
+  position: relative;
+  color: #6ab04c;
+  animation: text 3s infinite;
+}
+
+@keyframes text {
+  0% {
+    font-size: small;
+  }
+  30% {
+    letter-spacing: 25px;
+    color: black;
+    font-size: small;
+  }
+  80% {
+    color: black;
+    letter-spacing: 8px;
+  }
 }

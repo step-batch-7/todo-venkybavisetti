@@ -1,5 +1,6 @@
 data structure is array of objects
-example :- [{title:'something',completedTasks :[],unCompletedTasks:[]}]
+example :- [{title:'something',id:<number>,subTasks:[{text:"something",done:'boolean'}]}]
+another :- {<idNumber>:{title:<something>,subTasks:[{text:"something",done:'boolean'}]}} --good--
 
 launch todo server 
 --Done--    > create package.json file
@@ -14,5 +15,7 @@ create home page for todo
 --Done--    > home page in the public/html folder
 --Done--    > home page styles in the public/css folder
 
->add titles deletion
->add titles to add tasks
+--Done--  >add titles deletion
+--Done--  >add titles to add tasks
+
+add subTasks
