@@ -31,12 +31,29 @@ const createTodoTasks = function(task) {
   return todoBox;
 };
 
-const generateTodoTasks = function(text) {
+const createLists = function(task) {
+  const titlesList = document.createElement('li');
+  titlesList.innerHTML = `${task.title}`;
+  return titlesList;
+};
+
+const generateTodoContainer = function(todoTasks) {
   const todoTitleContainer = document.getElementById('todoList');
   todoTitleContainer.innerHTML = '';
-  const todoTasksJson = JSON.parse(text);
-  const todoTitles = todoTasksJson.map(createTodoTasks);
+  const todoTitles = todoTasks.map(createTodoTasks);
   todoTitles.forEach(task => todoTitleContainer.appendChild(task));
+};
+const generateTitlesContainer = function(todoTasks) {
+  const listContainer = document.getElementById('titlesList');
+  listContainer.innerHTML = '';
+  const titlesList = todoTasks.map(createLists);
+  titlesList.forEach(title => listContainer.appendChild(title));
+};
+
+const generateTodoTasks = function(text) {
+  const arrayOfObjects = JSON.parse(text);
+  generateTodoContainer(arrayOfObjects);
+  generateTitlesContainer(arrayOfObjects);
 };
 
 const addTitle = function() {

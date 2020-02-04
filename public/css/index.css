@@ -41,6 +41,25 @@ body {
   border-radius: 3px;
   border-right: 1px solid black;
 }
+
+#animation {
+  height: 140px;
+  border-bottom: black solid 1px;
+  border-radius: 4px;
+}
+#onlyTitles {
+  height: 460px;
+  overflow: scroll;
+}
+#titlesList {
+  list-style: none;
+  cursor: pointer;
+  position: relative;
+  padding: 5px;
+  font-size: 18px;
+  transition: 0.2s;
+  margin: 0;
+}
 #todoList {
   height: 590px;
   width: 80%;
@@ -69,8 +88,7 @@ body {
   border-bottom: 1px solid grey;
 }
 
-.text1 {
-  height: 100px;
+.animationOfText {
   color: white;
   font-size: 60px;
   letter-spacing: 6px;
@@ -93,4 +111,16 @@ body {
     color: black;
     letter-spacing: 8px;
   }
+}
+
+#titlesList li:nth-child(odd) {
+  background: #eeeeee;
+}
+
+#titlesList li {
+  border-radius: 5px;
+}
+
+#titlesList li:hover {
+  background: #ddd;
 }
