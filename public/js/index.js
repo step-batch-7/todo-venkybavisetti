@@ -10,6 +10,18 @@ const postHttpMsg = function(url, callback, message) {
   req.send(message);
 };
 
+const getHttpMsg = function(url, callback) {
+  const req = new XMLHttpRequest();
+  req.onload = function() {
+    if (this.status == '200') {
+      callback(this.responseText);
+    }
+  };
+  req.open('GET', url);
+  req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  req.send();
+};
+
 const createTodoTasks = function(task) {
   const todoBox = document.createElement('div');
   todoBox.classList.add('todoBox');
@@ -38,4 +50,8 @@ const removeTodoTitle = function() {
   const [, todoBox] = event.path;
   const todoBoxId = todoBox.id;
   postHttpMsg('/removeTodoBox', generateTodoTasks, `id=${todoBoxId}`);
+};
+
+const loadHomePage = function() {
+  getHttpMsg('/loadHomePage', generateTodoTasks);
 };

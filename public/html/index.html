@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="css/index.css" />
     <script src="js/index.js"></script>
   </head>
-  <body>
+  <body onload="loadHomePage()">
     <div class="header">
       <h2 style="text-align: center;">To Do List</h2>
       <input
@@ -16,8 +16,6 @@
       />
       <button id="submit" onclick="addTitle()">Add</button>
     </div>
-    <div id="todoList">
-      __todoList__
-    </div>
+    <div id="todoList"></div>
   </body>
 </html>
