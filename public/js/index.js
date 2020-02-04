@@ -10,16 +10,12 @@ const postHttpMsg = function(url, callback, message) {
   req.send(message);
 };
 
-const postCallback = function(text) {
-  const container = document.getElementById('todoList');
-  container.innerHTML = '';
-  container.innerHTML = text;
-};
-
-const createTitles = function(task) {
+const createTodoTasks = function(task) {
   const todoBox = document.createElement('div');
   todoBox.classList.add('todoBox');
-  todoBox.textContent = task.title;
+  todoBox.id = task.id;
+  todoBox.innerHTML = `<h4 class ="todoBoxHeader">${task.title}</h4>
+    <img src="https://img.icons8.com/color/48/000000/delete-forever.png" alt = 'x' class = 'close' onclick = 'removeTodoTitle()'/>`;
   return todoBox;
 };
 
@@ -27,8 +23,7 @@ const generateTodoTasks = function(text) {
   const todoTitleContainer = document.getElementById('todoList');
   todoTitleContainer.innerHTML = '';
   const todoTasksJson = JSON.parse(text);
-  console.log(todoTasksJson);
-  const todoTitles = todoTasksJson.map(createTitles);
+  const todoTitles = todoTasksJson.map(createTodoTasks);
   todoTitles.forEach(task => todoTitleContainer.appendChild(task));
 };
 
@@ -42,5 +37,5 @@ const addTitle = function() {
 const removeTodoTitle = function() {
   const [, todoBox] = event.path;
   const todoBoxId = todoBox.id;
-  postHttpMsg('/removeTodoBox', postCallback, `id=${todoBoxId}`);
+  postHttpMsg('/removeTodoBox', generateTodoTasks, `id=${todoBoxId}`);
 };
