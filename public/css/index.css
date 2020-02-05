@@ -126,3 +126,7 @@ body {
 #titlesList li:hover {
   background: #ddd;
 }
+
+img {
+  cursor: pointer;
+}
