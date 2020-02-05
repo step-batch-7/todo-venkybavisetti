@@ -36,13 +36,26 @@ const createTodoTasks = function(task) {
   return convertHtmlToNode(html);
 };
 
-const particularView = function(task) {
+const getSubTasksList = function(subTasks) {
+  const subTaskHtml = function(subTask) {
+    const html = `<li class="itemsDisplay">
+      ${subTask.text}
+      <img src="https://img.icons8.com/color/48/000000/delete-forever.png" class = 'close'  height ="17px"/>
+    </li>`;
+    return html;
+  };
+  return subTasks.map(subTaskHtml).join('');
+};
+
+const particularTaskView = function(task) {
   const html = `<div class="particularTaskBox">
     <div class="particularHeader">
       <h1>${task.title}</h1>
-      <img src="https://img.icons8.com/color/48/000000/delete-forever.png" alt = 'x' class = 'close' onclick = 'removeTodoTitle(${task.id})'/>
+      <img src="https://img.icons8.com/color/48/000000/delete-forever.png" 
+           alt = 'x' class = 'close' onclick = 'removeTodoTitle(${task.id})'
+      />
     </div>
-    <div class ="subTasksList"></div>
+    <ul class ="subTasksList">${getSubTasksList(task.tasks)}</ul>
   </div>`;
   return convertHtmlToNode(html);
 };
@@ -83,7 +96,7 @@ const generateSingleTodoTask = function(text) {
   const todoTitleContainer = document.getElementById('todoList');
   todoTitleContainer.innerHTML = '';
   todoTitleContainer.appendChild(createHeaderLineOfTask(task));
-  todoTitleContainer.appendChild(particularView(task));
+  todoTitleContainer.appendChild(particularTaskView(task));
 };
 
 const addTitle = function() {

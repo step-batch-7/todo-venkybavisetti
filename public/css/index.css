@@ -103,7 +103,7 @@ button:focus {
 }
 
 .todoBox {
-  background-color: rgb(151, 144, 144);
+  background-color: rgb(165, 162, 162);
   height: 100px;
   margin: 2px;
   border-radius: 5px;
@@ -113,7 +113,7 @@ button:focus {
 }
 
 .particularTaskBox {
-  background-color: rgb(151, 144, 144);
+  background-color: rgb(165, 162, 162);
   margin: 5px;
   border-radius: 5px;
   cursor: pointer;
@@ -130,6 +130,7 @@ button:focus {
 }
 
 .subTasksList {
+  padding: 5px;
 }
 
 .close {
