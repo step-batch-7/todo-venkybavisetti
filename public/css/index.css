@@ -113,7 +113,7 @@ button:focus {
 }
 
 .particularTaskBox {
-  background-color: rgb(165, 162, 162);
+  background-color: rgb(233, 232, 232);
   margin: 5px;
   border-radius: 5px;
   cursor: pointer;
@@ -131,6 +131,7 @@ button:focus {
 
 .subTasksList {
   padding: 5px;
+  font-size: 30px;
 }
 
 .close {
@@ -168,7 +169,8 @@ button:focus {
   }
 }
 
-#titlesList li:nth-child(odd) {
+#titlesList li:nth-child(odd),
+.subTasksList li:nth-child(odd) {
   background: #eeeeee;
 }
 
@@ -177,7 +179,8 @@ button:focus {
   position: relative;
 }
 
-#titlesList li:hover {
+#titlesList li:hover,
+.subTasksList li:hover {
   background: #ddd;
 }
 

@@ -36,15 +36,15 @@ const createTodoTasks = function(task) {
   return convertHtmlToNode(html);
 };
 
-const getSubTasksList = function(subTasks) {
+const getSubTasksList = function(task) {
   const subTaskHtml = function(subTask) {
     const html = `<li class="itemsDisplay">
       ${subTask.text}
-      <img src="https://img.icons8.com/color/48/000000/delete-forever.png" class = 'close'  height ="17px"/>
+      <img src="https://img.icons8.com/color/48/000000/delete-forever.png" class = 'close'  height ="30px" onclick="removeSubTask(${task.id},${subTask.id})"/>
     </li>`;
     return html;
   };
-  return subTasks.map(subTaskHtml).join('');
+  return task.tasks.map(subTaskHtml).join('');
 };
 
 const particularTaskView = function(task) {
@@ -55,7 +55,7 @@ const particularTaskView = function(task) {
            alt = 'x' class = 'close' onclick = 'removeTodoTitle(${task.id})'
       />
     </div>
-    <ul class ="subTasksList">${getSubTasksList(task.tasks)}</ul>
+    <ul class ="subTasksList">${getSubTasksList(task)}</ul>
   </div>`;
   return convertHtmlToNode(html);
 };
@@ -119,6 +119,14 @@ const addSubTasks = function(id) {
 
 const removeTodoTitle = function(id) {
   postHttpMsg('/removeTodoBox', generateTodoTasks, `id=${id}`);
+};
+
+const removeSubTask = function(taskId, subTaskId) {
+  postHttpMsg(
+    '/removeSubTask',
+    generateSingleTodoTask,
+    `taskId=${taskId}&subTaskId=${subTaskId}`
+  );
 };
 
 const particularTask = function(id) {
