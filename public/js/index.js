@@ -36,6 +36,17 @@ const createTodoTasks = function(task) {
   return convertHtmlToNode(html);
 };
 
+const particularView = function(task) {
+  const html = `<div class="particularTaskBox">
+    <div class="particularHeader">
+      <h1>${task.title}</h1>
+      <img src="https://img.icons8.com/color/48/000000/delete-forever.png" alt = 'x' class = 'close' onclick = 'removeTodoTitle(${task.id})'/>
+    </div>
+    <div class ="subTasksList"></div>
+  </div>`;
+  return convertHtmlToNode(html);
+};
+
 const createLists = function(task) {
   const html = `<li id="${task.id}" onclick="particularTask(${task.id})" class="itemsDisplay">
     ${task.title}<img src="https://img.icons8.com/color/48/000000/delete-forever.png" class = 'close' onclick = 'removeTodoTitle(${task.id})' height ="17px"/>
@@ -62,7 +73,7 @@ const generateTodoTasks = function(text) {
   generateTitlesContainer(arrayOfObjects);
 };
 const createHeaderLineOfTask = function(task) {
-  const html = `<div class="particularHeader"><img src="https://img.icons8.com/plasticine/100/000000/return.png"  onclick = "loadHomePage()" height ="30px"> 
+  const html = `<div class="returnBar"><img src="https://img.icons8.com/plasticine/100/000000/return.png"  onclick = "loadHomePage()" height ="30px"> 
   <div class="submissionOfTaskHeader"><input type="text" name="title" class="tasksInput" placeholder="Tasks..." required="true"/><button class="taskSubmit" onclick="addSubTasks(${task.id})">Add</button></div>
   </div>`;
   return convertHtmlToNode(html);
@@ -72,7 +83,7 @@ const generateSingleTodoTask = function(text) {
   const todoTitleContainer = document.getElementById('todoList');
   todoTitleContainer.innerHTML = '';
   todoTitleContainer.appendChild(createHeaderLineOfTask(task));
-  todoTitleContainer.appendChild(createTodoTasks(task));
+  todoTitleContainer.appendChild(particularView(task));
 };
 
 const addTitle = function() {
@@ -82,16 +93,15 @@ const addTitle = function() {
   postHttpMsg('/addTodoBox', generateTodoTasks, `title=${newTitle}`);
 };
 
-const duplicate = function(text) {
-  const task = JSON.parse(text);
-  console.log(task);
-};
-
 const addSubTasks = function(id) {
   const newSubTaskBox = document.querySelector('.tasksInput');
   const newSubTask = newSubTaskBox.value;
   newSubTaskBox.value = '';
-  postHttpMsg('/addSubTask', duplicate, `subTask=${newSubTask}&id=${id}`);
+  postHttpMsg(
+    '/addSubTask',
+    generateSingleTodoTask,
+    `subTask=${newSubTask}&id=${id}`
+  );
 };
 
 const removeTodoTitle = function(id) {

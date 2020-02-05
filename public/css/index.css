@@ -21,7 +21,8 @@ body {
   border: 0px;
   cursor: pointer;
 }
-.particularHeader {
+
+.returnBar {
   display: flex;
   justify-content: space-between;
   margin: 2px;
@@ -111,11 +112,30 @@ button:focus {
   cursor: pointer;
 }
 
+.particularTaskBox {
+  background-color: rgb(151, 144, 144);
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 92%;
+  overflow: scroll;
+}
+
+.particularHeader {
+  position: relative;
+  padding: 4px;
+  border-bottom: 1px solid black;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.subTasksList {
+}
+
 .close {
   position: absolute;
   right: 0;
-  top: 0;
-  padding-top: 3px;
+  top: 3;
 }
 
 .todoBoxHeader {
