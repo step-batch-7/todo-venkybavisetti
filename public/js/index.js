@@ -29,8 +29,7 @@ const convertHtmlToNode = function(html) {
 };
 
 const createTodoTasks = function(task) {
-  const html = `
-  <div class="todoBox" id="${task.id}" onclick="particularTask(${task.id})">
+  const html = `<div class="todoBox" id="${task.id}" onclick="particularTask(${task.id})">
     <h4 class ="todoBoxHeader" >${task.title}</h4>
     <img src="https://img.icons8.com/color/48/000000/delete-forever.png" alt = 'x' class = 'close' onclick = 'removeTodoTitle(${task.id})'/>
   </div>`;
@@ -38,19 +37,15 @@ const createTodoTasks = function(task) {
 };
 
 const createLists = function(task) {
-  const titlesList = document.createElement('li');
-  titlesList.innerHTML = `${task.title} 
-  <img src="https://img.icons8.com/color/48/000000/delete-forever.png" alt = 'x' class = 'close' onclick = 'removeTodoTitle(${task.id})' height ="17px"/>`;
-  titlesList.id = task.id;
-  titlesList.onclick = particularTask;
-  titlesList.classList.add('itemsDisplay');
-  return titlesList;
+  const html = `<li id="${task.id}" onclick="particularTask(${task.id})" class="itemsDisplay">
+    ${task.title}<img src="https://img.icons8.com/color/48/000000/delete-forever.png" class = 'close' onclick = 'removeTodoTitle(${task.id})' height ="17px"/>
+  </li>`;
+  return convertHtmlToNode(html);
 };
 
 const createReturnImage = function() {
-  const imageDiv = document.createElement('div');
-  imageDiv.innerHTML = `<img src="https://img.icons8.com/plasticine/100/000000/return.png"  onclick = "loadHomePage()" height ="30px"></img>`;
-  return imageDiv;
+  const html = `<img src="https://img.icons8.com/plasticine/100/000000/return.png"  onclick = "loadHomePage()" height ="30px">`;
+  return convertHtmlToNode(html);
 };
 
 const generateTodoContainer = function(todoTasks) {
