@@ -1,7 +1,9 @@
+const statusCode = { ok: 200 };
+
 const postHttpMsg = function(url, callback, message) {
   const req = new XMLHttpRequest();
   req.onload = function() {
-    if (this.status == '200') {
+    if (this.status === statusCode.ok) {
       callback(this.responseText);
     }
   };
@@ -13,7 +15,7 @@ const postHttpMsg = function(url, callback, message) {
 const getHttpMsg = function(url, callback) {
   const req = new XMLHttpRequest();
   req.onload = function() {
-    if (this.status == '200') {
+    if (this.status === statusCode.ok) {
       callback(this.responseText);
     }
   };
@@ -28,19 +30,33 @@ const convertHtmlToNode = function(html) {
   return temp.firstChild;
 };
 
-const createTodoTasks = function(task) {
-  const html = `<div class="todoBox" id="${task.id}" onclick="particularTask(${task.id})">
-    <h4 class ="todoBoxHeader" >${task.title}</h4>
-    <img src="https://img.icons8.com/color/48/000000/delete-forever.png" alt = 'x' class = 'close' onclick = 'removeTodoTitle(${task.id})'/>
-  </div>`;
+const createTasks = function(task) {
+  const html = `<div 
+    class="todoBox" 
+    id="${task.id}" 
+    onclick="particularTask(${task.id})"
+    >
+      <h4 class ="todoBoxHeader" >${task.title}</h4>
+      <img 
+        src="https://img.icons8.com/color/48/000000/delete-forever.png" 
+        alt = 'x' 
+        class = 'close' 
+        onclick = 'removeTask(${task.id})'
+      />
+    </div>`;
   return convertHtmlToNode(html);
 };
 
 const getSubTasksList = function(task) {
   const subTaskHtml = function(subTask) {
-    const html = `<li class="itemsDisplay">
+    const html = `<li class="listDisplay">
       ${subTask.text}
-      <img src="https://img.icons8.com/color/48/000000/delete-forever.png" class = 'close'  height ="30px" onclick="removeSubTask(${task.id},${subTask.id})"/>
+      <img 
+        src="https://img.icons8.com/color/48/000000/delete-forever.png" 
+        class = 'close' 
+        height ="30px" 
+        onclick="removeSubTask(${task.id},${subTask.id})"
+      />
     </li>`;
     return html;
   };
@@ -48,89 +64,119 @@ const getSubTasksList = function(task) {
 };
 
 const particularTaskView = function(task) {
-  const html = `<div class="particularTaskBox">
-    <div class="particularHeader">
+  const html = `<div class="particularTask">
+    <div class="particularTaskHeader">
       <h1>${task.title}</h1>
       <img src="https://img.icons8.com/color/48/000000/delete-forever.png" 
-           alt = 'x' class = 'close' onclick = 'removeTodoTitle(${task.id})'
+           alt = 'x' class = 'close' onclick = 'removeTask(${task.id})'
       />
     </div>
-    <ul class ="subTasksList">${getSubTasksList(task)}</ul>
+    <ul class ="subTaskList">${getSubTasksList(task)}</ul>
   </div>`;
   return convertHtmlToNode(html);
 };
 
-const createLists = function(task) {
-  const html = `<li id="${task.id}" onclick="particularTask(${task.id})" class="itemsDisplay">
-    ${task.title}<img src="https://img.icons8.com/color/48/000000/delete-forever.png" class = 'close' onclick = 'removeTodoTitle(${task.id})' height ="17px"/>
+const createTitle = function(task) {
+  const titleHtml = `<li 
+    onclick="particularTask(${task.id})" 
+    class="listDisplay"
+  >
+    ${task.title}
+    <img 
+      src="https://img.icons8.com/color/48/000000/delete-forever.png"
+      class = 'close' 
+      onclick = 'removeTask(${task.id})' 
+      height ="17px"
+    />
   </li>`;
+  return convertHtmlToNode(titleHtml);
+};
+
+const createReturnBar = function(task) {
+  const html = `<div class="returnBar">
+    <img 
+      src="https://img.icons8.com/plasticine/100/000000/return.png" 
+      onclick = "loadHomePage()" 
+      height ="30px"
+    >
+    <div class="subTaskAdder">
+      <input 
+        type="text" 
+        name="title" 
+        class="subTaskInput" 
+        placeholder="Tasks..."
+      />
+      <button 
+        class="taskSubmit"
+        onclick="addNewSubTask(${task.id})"
+      >
+        Add
+      </button>
+    </div>
+  </div>`;
   return convertHtmlToNode(html);
 };
 
-const generateTodoContainer = function(todoTasks) {
-  const todoTitleContainer = document.getElementById('todoList');
-  todoTitleContainer.innerHTML = '';
-  const todoTitles = todoTasks.map(createTodoTasks);
-  todoTitles.forEach(task => todoTitleContainer.appendChild(task));
+const setUpTitleContainer = function(tasks) {
+  const titleContainer = document.getElementById('titleContainer');
+  titleContainer.innerHTML = '';
+  const titleList = tasks.map(createTitle);
+  titleList.forEach(title => titleContainer.appendChild(title));
 };
-const generateTitlesContainer = function(todoTasks) {
-  const listContainer = document.getElementById('titlesList');
-  listContainer.innerHTML = '';
-  const titlesList = todoTasks.map(createLists);
-  titlesList.forEach(title => listContainer.appendChild(title));
+
+const setUpTaskContainer = function(tasks) {
+  const taskContainer = document.getElementById('taskContainer');
+  taskContainer.innerHTML = '';
+  const taskList = tasks.map(createTasks);
+  taskList.forEach(task => taskContainer.appendChild(task));
 };
 
 const generateTodoTasks = function(text) {
   const arrayOfObjects = JSON.parse(text);
-  generateTodoContainer(arrayOfObjects);
-  generateTitlesContainer(arrayOfObjects);
-};
-const createHeaderLineOfTask = function(task) {
-  const html = `<div class="returnBar"><img src="https://img.icons8.com/plasticine/100/000000/return.png"  onclick = "loadHomePage()" height ="30px"> 
-  <div class="submissionOfTaskHeader"><input type="text" name="title" class="tasksInput" placeholder="Tasks..." required="true"/><button class="taskSubmit" onclick="addSubTasks(${task.id})">Add</button></div>
-  </div>`;
-  return convertHtmlToNode(html);
-};
-const generateSingleTodoTask = function(text) {
-  const task = JSON.parse(text);
-  const todoTitleContainer = document.getElementById('todoList');
-  todoTitleContainer.innerHTML = '';
-  todoTitleContainer.appendChild(createHeaderLineOfTask(task));
-  todoTitleContainer.appendChild(particularTaskView(task));
+  setUpTitleContainer(arrayOfObjects);
+  setUpTaskContainer(arrayOfObjects);
 };
 
-const addTitle = function() {
-  const newTitleBox = document.querySelector('#title');
-  const newTitle = newTitleBox.value;
-  newTitleBox.value = '';
-  postHttpMsg('/addTodoBox', generateTodoTasks, `title=${newTitle}`);
+const generateParticularTask = function(text) {
+  const arrayOfObjects = JSON.parse(text);
+  const taskContainer = document.getElementById('taskContainer');
+  taskContainer.innerHTML = '';
+  taskContainer.appendChild(createReturnBar(arrayOfObjects));
+  taskContainer.appendChild(particularTaskView(arrayOfObjects));
 };
 
-const addSubTasks = function(id) {
-  const newSubTaskBox = document.querySelector('.tasksInput');
-  const newSubTask = newSubTaskBox.value;
-  newSubTaskBox.value = '';
+const addNewTask = function() {
+  const newTaskInput = document.querySelector('#taskInput');
+  const newTask = newTaskInput.value;
+  newTaskInput.value = '';
+  postHttpMsg('/addTodoBox', generateTodoTasks, `title=${newTask}`);
+};
+
+const addNewSubTask = function(id) {
+  const newSubTaskInput = document.querySelector('.subTaskInput');
+  const newSubTask = newSubTaskInput.value;
+  newSubTaskInput.value = '';
   postHttpMsg(
     '/addSubTask',
-    generateSingleTodoTask,
+    generateParticularTask,
     `subTask=${newSubTask}&id=${id}`
   );
 };
 
-const removeTodoTitle = function(id) {
+const removeTask = function(id) {
   postHttpMsg('/removeTodoBox', generateTodoTasks, `id=${id}`);
 };
 
 const removeSubTask = function(taskId, subTaskId) {
   postHttpMsg(
     '/removeSubTask',
-    generateSingleTodoTask,
+    generateParticularTask,
     `taskId=${taskId}&subTaskId=${subTaskId}`
   );
 };
 
 const particularTask = function(id) {
-  postHttpMsg('/particularTask', generateSingleTodoTask, `id=${id}`);
+  postHttpMsg('/particularTask', generateParticularTask, `id=${id}`);
 };
 
 const loadHomePage = function() {

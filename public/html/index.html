@@ -10,11 +10,11 @@
       <input
         type="text"
         name="title"
-        id="title"
+        id="taskInput"
         placeholder="Title..."
         required="true"
       />
-      <button id="submit" onclick="addTitle()">Add</button>
+      <button id="submit" onclick="addNewTask()">Add</button>
     </div>
     <div id="TodoContainer">
       <div id="smartLook">
@@ -22,10 +22,10 @@
           <span class="animationOfText"> My Todo Work</span>
         </div>
         <div id="onlyTitles">
-          <ul id="titlesList"></ul>
+          <ul id="titleContainer"></ul>
         </div>
       </div>
-      <div id="todoList"></div>
+      <div id="taskContainer"></div>
     </div>
   </body>
 </html>
