@@ -5,20 +5,14 @@
     <script src="js/index.js"></script>
   </head>
   <body onload="loadHomePage()">
-    <div class="header">
+    <div class="bodyHeader">
       <h2 style="text-align: center;">To Do List</h2>
-      <input
-        type="text"
-        name="title"
-        id="taskInput"
-        placeholder="Title..."
-        required="true"
-      />
-      <button id="submit" onclick="addNewTask()">Add</button>
+      <input type="text" name="title" id="taskInput" placeholder="Title..." />
+      <button id="taskSubmit" onclick="addNewTask()">Add</button>
     </div>
     <div id="TodoContainer">
-      <div id="smartLook">
-        <div id="animation">
+      <div id="smartContainer">
+        <div id="todoAnimation">
           <span class="animationOfText"> My Todo Work</span>
         </div>
         <div id="onlyTitles">

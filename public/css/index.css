@@ -1,19 +1,26 @@
+/* --------------homePage--------------- */
+img {
+  cursor: pointer;
+}
+
 body {
   font-family: sans-serif;
 }
 
-.header {
+.bodyHeader {
   background-color: black;
   padding: 30px 40px;
   color: white;
 }
+
 #taskInput {
   width: 75%;
   padding: 10px;
   font-size: 16px;
   border: 0px;
 }
-#submit {
+
+#taskSubmit {
   width: 20%;
   padding: 10px;
   font-size: 16px;
@@ -22,44 +29,6 @@ body {
   cursor: pointer;
 }
 
-.returnBar {
-  display: flex;
-  justify-content: space-between;
-  margin: 2px;
-}
-.subTaskAdder {
-  width: 75%;
-}
-.subTaskInput {
-  width: 50%;
-  padding: 10px;
-  border: 0px;
-  border-bottom: 1px solid black;
-  border-radius: 5px;
-  background-color: rgb(250, 253, 253);
-}
-
-input[type='text']:focus,
-button:focus {
-  outline: none;
-}
-
-.taskSubmit {
-  width: 20%;
-  padding: 10px;
-  background-color: lightblue;
-  cursor: pointer;
-  border-radius: 50%;
-}
-
-.taskSubmit:hover {
-  background-color: blue;
-  color: white;
-}
-#submit:hover {
-  background-color: blue;
-  color: white;
-}
 #TodoContainer {
   height: 590px;
   border-radius: 5px;
@@ -69,84 +38,19 @@ button:focus {
   justify-content: space-evenly;
 }
 
-#smartLook {
+#smartContainer {
   height: 590px;
   width: 20%;
   border-radius: 3px;
   border-right: 1px solid black;
 }
 
-#animation {
-  height: 23.7%;
+#todoAnimation {
+  height: 24%;
   border-bottom: black solid 1px;
-  border-radius: 4px;
-}
-#onlyTitles {
-  height: 76.3%;
-  overflow: scroll;
-}
-#titleContainer {
-  list-style: none;
-  cursor: pointer;
-  position: relative;
-  padding: 5px;
-  font-size: 18px;
-  transition: 0.2s;
-  margin: 0;
-}
-#taskContainer {
-  height: 590px;
-  width: 80%;
-  border-radius: 3px;
-  overflow: scroll;
-  border-left: 1px solid black;
-}
-
-.todoBox {
-  background-color: rgb(165, 162, 162);
-  height: 100px;
-  margin: 2px;
   border-radius: 5px;
-  padding: 4px;
-  position: relative;
-  cursor: pointer;
 }
 
-.particularTask {
-  background-color: rgb(233, 232, 232);
-  margin: 5px;
-  border-radius: 5px;
-  cursor: pointer;
-  height: 92%;
-  overflow: scroll;
-}
-
-.particularTaskHeader {
-  position: relative;
-  padding: 4px;
-  border-bottom: 1px solid black;
-  border-radius: 5px;
-  text-align: center;
-}
-
-.subTaskList {
-  padding: 5px;
-  font-size: 30px;
-  font-weight: 100px;
-}
-
-.close {
-  position: absolute;
-  right: 0;
-  top: 3;
-}
-
-.todoBoxHeader {
-  border-bottom: 1px solid grey;
-}
-.checked {
-  text-decoration: line-through;
-}
 .animationOfText {
   color: white;
   font-size: 60px;
@@ -172,25 +76,133 @@ button:focus {
   }
 }
 
-#titleContainer li:nth-child(odd),
-.subTaskList li:nth-child(odd) {
-  background: #eeeeee;
+#onlyTitles {
+  height: 76%;
+  overflow: scroll;
 }
 
-.listDisplay {
+#titleContainer {
+  list-style: none;
+  cursor: pointer;
+  position: relative;
+  padding: 5px;
+  font-size: 18px;
+  transition: 0.2s;
+  margin: 0;
+}
+
+.titleListDisplay {
   border-radius: 5px;
   position: relative;
 }
 
-.listClass {
+.close {
+  position: absolute;
+  right: 0;
+  top: 3;
+}
+
+#taskContainer {
+  height: 590px;
+  width: 80%;
+  border-radius: 3px;
+  overflow: scroll;
+  border-left: 1px solid black;
+}
+
+.todoBox {
+  background-color: rgb(165, 162, 162);
+  height: 100px;
+  margin: 2px;
+  border-radius: 5px;
+  padding: 4px;
+  position: relative;
+  cursor: pointer;
+}
+
+.todoBoxHeader {
+  border-bottom: 1px solid grey;
+}
+
+/* ---------------onParticularView-------------- */
+
+.returnBar {
+  display: flex;
+  justify-content: space-between;
+  margin: 2px;
+}
+
+.subTaskAdder {
+  width: 75%;
+}
+
+.subTaskInput {
+  width: 50%;
+  padding: 10px;
+  border: 0px;
+  border-bottom: 1px solid black;
+  border-radius: 5px;
+  background-color: rgb(250, 253, 253);
+}
+
+.subTaskSubmit {
+  width: 20%;
+  padding: 10px;
+  background-color: lightblue;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.particularTask {
+  background-color: rgb(233, 232, 232);
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 92%;
+  overflow: scroll;
+}
+
+.particularTaskHeader {
+  position: relative;
+  padding: 4px;
+  border-bottom: 1px solid black;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.subTaskList {
+  padding: 5px;
+  font-weight: 500px;
+}
+
+.unCheckedClass {
   border-radius: 5px;
   position: relative;
+  font-size: 20px;
 }
 
 .checkedClass {
+  font-size: 20px;
   border-radius: 5px;
   position: relative;
   text-decoration: line-through;
+}
+
+/* -----------All animations------------ */
+
+.subTaskSubmit:hover {
+  background-color: blue;
+  color: white;
+}
+
+#taskSubmit:hover {
+  background-color: blue;
+  color: white;
+}
+
+input[type='text']:focus,
+button:focus {
+  outline: none;
 }
 
 #titleContainer li:hover,
@@ -198,6 +210,7 @@ button:focus {
   background: #ddd;
 }
 
-img {
-  cursor: pointer;
+#titleContainer li:nth-child(odd),
+.subTaskList li:nth-child(odd) {
+  background: #eeeeee;
 }

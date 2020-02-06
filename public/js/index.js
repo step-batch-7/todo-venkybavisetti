@@ -33,7 +33,6 @@ const convertHtmlToNode = function(html) {
 const createTasks = function(task) {
   const taskHtml = `<div 
     class="todoBox" 
-    id="${task.id}" 
     onclick="particularTask(${task.id})"
     >
       <h4 class ="todoBoxHeader" >${task.title}</h4>
@@ -52,7 +51,7 @@ const isChecked = function(boolean) {
 };
 
 const getClass = function(boolean) {
-  return boolean ? 'class="checkedClass"' : 'class="listClass"';
+  return boolean ? 'class="checkedClass"' : 'class="unCheckedClass"';
 };
 
 const getSubTasksList = function(task) {
@@ -92,7 +91,7 @@ const particularTaskView = function(task) {
 const createTitle = function(task) {
   const titleHtml = `<li 
     onclick="particularTask(${task.id})" 
-    class="listDisplay"
+    class="titleListDisplay"
   >
     ${task.title}
     <img 
@@ -120,7 +119,7 @@ const createReturnBar = function(task) {
         placeholder="Tasks..."
       />
       <button 
-        class="taskSubmit"
+        class=".subTaskSubmit"
         onclick="addNewSubTask(${task.id})"
       >
         Add
