@@ -132,6 +132,7 @@ button:focus {
 .subTaskList {
   padding: 5px;
   font-size: 30px;
+  font-weight: 100px;
 }
 
 .close {
@@ -143,7 +144,9 @@ button:focus {
 .todoBoxHeader {
   border-bottom: 1px solid grey;
 }
-
+.checked {
+  text-decoration: line-through;
+}
 .animationOfText {
   color: white;
   font-size: 60px;
@@ -177,6 +180,17 @@ button:focus {
 .listDisplay {
   border-radius: 5px;
   position: relative;
+}
+
+.listClass {
+  border-radius: 5px;
+  position: relative;
+}
+
+.checkedClass {
+  border-radius: 5px;
+  position: relative;
+  text-decoration: line-through;
 }
 
 #titleContainer li:hover,

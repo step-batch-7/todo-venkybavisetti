@@ -31,7 +31,7 @@ const convertHtmlToNode = function(html) {
 };
 
 const createTasks = function(task) {
-  const html = `<div 
+  const taskHtml = `<div 
     class="todoBox" 
     id="${task.id}" 
     onclick="particularTask(${task.id})"
@@ -44,12 +44,25 @@ const createTasks = function(task) {
         onclick = 'removeTask(${task.id})'
       />
     </div>`;
-  return convertHtmlToNode(html);
+  return convertHtmlToNode(taskHtml);
+};
+
+const isChecked = function(boolean) {
+  return boolean ? 'checked' : '';
+};
+
+const getClass = function(boolean) {
+  return boolean ? 'class="checkedClass"' : 'class="listClass"';
 };
 
 const getSubTasksList = function(task) {
   const subTaskHtml = function(subTask) {
-    const html = `<li class="listDisplay">
+    const subTaskHtml = `<li ${getClass(subTask.done)} ">
+      <input 
+        type="checkbox" 
+        ${isChecked(subTask.done)} 
+        onclick="toggleDone(${task.id},${subTask.id})"
+      >
       ${subTask.text}
       <img 
         src="https://img.icons8.com/color/48/000000/delete-forever.png" 
@@ -58,13 +71,13 @@ const getSubTasksList = function(task) {
         onclick="removeSubTask(${task.id},${subTask.id})"
       />
     </li>`;
-    return html;
+    return subTaskHtml;
   };
   return task.tasks.map(subTaskHtml).join('');
 };
 
 const particularTaskView = function(task) {
-  const html = `<div class="particularTask">
+  const particularTaskHtml = `<div class="particularTask">
     <div class="particularTaskHeader">
       <h1>${task.title}</h1>
       <img src="https://img.icons8.com/color/48/000000/delete-forever.png" 
@@ -73,7 +86,7 @@ const particularTaskView = function(task) {
     </div>
     <ul class ="subTaskList">${getSubTasksList(task)}</ul>
   </div>`;
-  return convertHtmlToNode(html);
+  return convertHtmlToNode(particularTaskHtml);
 };
 
 const createTitle = function(task) {
@@ -93,7 +106,7 @@ const createTitle = function(task) {
 };
 
 const createReturnBar = function(task) {
-  const html = `<div class="returnBar">
+  const returnHtml = `<div class="returnBar">
     <img 
       src="https://img.icons8.com/plasticine/100/000000/return.png" 
       onclick = "loadHomePage()" 
@@ -114,7 +127,7 @@ const createReturnBar = function(task) {
       </button>
     </div>
   </div>`;
-  return convertHtmlToNode(html);
+  return convertHtmlToNode(returnHtml);
 };
 
 const setUpTitleContainer = function(tasks) {
@@ -149,7 +162,7 @@ const addNewTask = function() {
   const newTaskInput = document.querySelector('#taskInput');
   const newTask = newTaskInput.value;
   newTaskInput.value = '';
-  postHttpMsg('/addTodoBox', generateTodoTasks, `title=${newTask}`);
+  postHttpMsg('/addTask', generateTodoTasks, `title=${newTask}`);
 };
 
 const addNewSubTask = function(id) {
@@ -164,7 +177,7 @@ const addNewSubTask = function(id) {
 };
 
 const removeTask = function(id) {
-  postHttpMsg('/removeTodoBox', generateTodoTasks, `id=${id}`);
+  postHttpMsg('/removeTask', generateTodoTasks, `id=${id}`);
 };
 
 const removeSubTask = function(taskId, subTaskId) {
@@ -175,8 +188,22 @@ const removeSubTask = function(taskId, subTaskId) {
   );
 };
 
+const duplicate = function(text) {
+  const object = JSON.parse(text);
+  console.log(object);
+};
+
+const toggleDone = function(taskId, subTaskId) {
+  console.log(taskId, subTaskId);
+  postHttpMsg(
+    '/toggleDone',
+    generateParticularTask,
+    `taskId=${taskId}&subTaskId=${subTaskId}`
+  );
+};
+
 const particularTask = function(id) {
-  postHttpMsg('/particularTask', generateParticularTask, `id=${id}`);
+  postHttpMsg('/viewParticularTask', generateParticularTask, `id=${id}`);
 };
 
 const loadHomePage = function() {

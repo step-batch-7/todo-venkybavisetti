@@ -62,7 +62,6 @@
     "no-eval": "error",
     "no-implicit-globals": "error",
     "prefer-const": "error",
-    "no-magic-numbers": "error",
     "no-process-exit": "error",
     "no-process-env": "error",
     "no-return-assign": "error",
@@ -108,10 +107,13 @@
     },
     {
       "files": [
-        "public/js/*.js"
+        "public/js/*.js",
+        "lib/app.js",
+        "server.js"
       ],
       "rules": {
-        "no-unused-vars": "off"
+        "no-unused-vars": "off",
+        "no-console": "off"
       }
     }
   ]
