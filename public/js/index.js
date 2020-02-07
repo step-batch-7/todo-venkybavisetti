@@ -30,7 +30,19 @@ const convertHtmlToNode = function(html) {
   return temp.firstChild;
 };
 
+const getStatus = function(subTasks) {
+  const doneTasks = subTasks.reduce((doneNum, task) => {
+    return task.done ? ++doneNum : doneNum;
+  }, 0);
+  return {
+    totalTasks: subTasks.length,
+    doneTasks,
+    notDoneTasks: subTasks.length - doneTasks
+  };
+};
+
 const createTasks = function(task) {
+  const taskStatus = getStatus(task.tasks);
   const taskHtml = `<div 
     class="todoBox" 
     onclick="particularTask(${task.id})"
@@ -42,6 +54,11 @@ const createTasks = function(task) {
         height="30px"
         onclick = 'removeTask(${task.id})'
       />
+      </div>
+      <div class="statusBar">
+        <span class="totalTasks">Total Tasks :- ${taskStatus.totalTasks}</span>
+        <span class="tasksDone">${taskStatus.doneTasks}</span>
+        <span class="tasksNotDone">${taskStatus.notDoneTasks}</span>
       </div>
     </div>`;
   return convertHtmlToNode(taskHtml);
@@ -80,9 +97,17 @@ const getSubTasksList = function(task) {
 };
 
 const particularTaskView = function(task) {
+  const taskStatus = getStatus(task.tasks);
   const particularTaskHtml = `<div class="particularTask">
     <div class="particularTaskHeader">
       <h1>${task.title}</h1>
+      <div class="statusBar">
+        <span class="totalTasksInParticularTask">
+          Total Tasks :- ${taskStatus.totalTasks}
+        </span>
+        <span class="tasksDone">${taskStatus.doneTasks}</span>
+        <span class="tasksNotDone">${taskStatus.notDoneTasks}</span>
+      </div>
       <img src="https://img.icons8.com/wired/64/000000/trash.png"
            height="40px" onclick = 'removeTask(${task.id})'
       />

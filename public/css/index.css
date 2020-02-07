@@ -113,7 +113,7 @@ body {
 }
 
 .todoBox {
-  background-color: rgb(211, 211, 211);
+  background-color: rgb(189, 189, 189);
   height: 100px;
   margin: 2px;
   border-radius: 5px;
@@ -122,6 +122,35 @@ body {
   cursor: pointer;
 }
 
+.statusBar {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.totalTasks,
+.totalTasksInParticularTask,
+.tasksDone,
+.tasksNotDone {
+  height: 20px;
+  border-radius: 20px;
+  padding: 5px;
+}
+
+.totalTasks,
+.totalTasksInParticularTask {
+  background-color: darkgray;
+}
+.totalTasksInParticularTask {
+  width: 150px;
+}
+.tasksDone {
+  background-color: lightgreen;
+  margin: 0% 1%;
+}
+.tasksNotDone {
+  background-color: lightsalmon;
+}
 .allHeaders {
   font-size: 25px;
   display: flex;
