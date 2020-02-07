@@ -56,26 +56,29 @@ const getClass = function(boolean) {
 };
 
 const getSubTasksList = function(task) {
-  const subTaskHtml = function(subTask) {
+  const subTaskHtml = function(subTaskList, subTask) {
     const subTaskHtml = `<li ${getClass(subTask.done)} ">
-    <div>
-      <input 
-        type="checkbox" 
-        ${isChecked(subTask.done)} 
-        onclick="toggleDone(${task.id},${subTask.id})"
-      >
-      ${subTask.text}
+      <div>
+        <input 
+          type="checkbox" 
+          ${isChecked(subTask.done)} 
+          onclick="toggleDone(${task.id},${subTask.id})"
+        >
+        ${subTask.text}
       </div>
       <div>
-      <img 
-        src="https://img.icons8.com/ios-glyphs/30/000000/cancel.png"
-        onclick="removeSubTask(${task.id},${subTask.id})" height ="22px"
-      />
+        <img 
+          src="https://img.icons8.com/ios-glyphs/30/000000/cancel.png"
+          onclick="removeSubTask(${task.id},${subTask.id})" height ="22px"
+        />
       </div>
     </li>`;
-    return subTaskHtml;
+    subTask.done
+      ? subTaskList.push(subTaskHtml)
+      : subTaskList.unshift(subTaskHtml);
+    return subTaskList;
   };
-  return task.tasks.map(subTaskHtml).join('');
+  return task.tasks.reduce(subTaskHtml, []).join('');
 };
 
 const particularTaskView = function(task) {
@@ -188,13 +191,7 @@ const removeSubTask = function(taskId, subTaskId) {
   );
 };
 
-const duplicate = function(text) {
-  const object = JSON.parse(text);
-  console.log(object);
-};
-
 const toggleDone = function(taskId, subTaskId) {
-  console.log(taskId, subTaskId);
   postHttpMsg(
     '/toggleDone',
     generateParticularTask,
