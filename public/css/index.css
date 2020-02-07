@@ -57,7 +57,7 @@ body {
   letter-spacing: 6px;
   margin-bottom: 20px;
   position: relative;
-  color: #6ab04c;
+  color: black;
   animation: text 3s 1;
 }
 
@@ -70,6 +70,7 @@ body {
     color: black;
     font-size: small;
   }
+
   80% {
     color: black;
     letter-spacing: 8px;
@@ -93,13 +94,8 @@ body {
 
 .titleListDisplay {
   border-radius: 5px;
-  position: relative;
-}
-
-.close {
-  position: absolute;
-  right: 0;
-  top: 3;
+  display: flex;
+  justify-content: space-between;
 }
 
 #taskContainer {
@@ -120,8 +116,12 @@ body {
   cursor: pointer;
 }
 
-.todoBoxHeader {
-  border-bottom: 1px solid grey;
+.allHeaders {
+  font-size: 25px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+  border-radius: 5px;
 }
 
 /* ---------------onParticularView-------------- */
@@ -145,14 +145,6 @@ body {
   background-color: rgb(250, 253, 253);
 }
 
-.subTaskSubmit {
-  width: 20%;
-  padding: 10px;
-  background-color: lightblue;
-  cursor: pointer;
-  border-radius: 50%;
-}
-
 .particularTask {
   background-color: rgb(233, 232, 232);
   margin: 5px;
@@ -163,11 +155,12 @@ body {
 }
 
 .particularTaskHeader {
-  position: relative;
   padding: 4px;
   border-bottom: 1px solid black;
   border-radius: 5px;
   text-align: center;
+  display: flex;
+  justify-content: space-between;
 }
 
 .subTaskList {
@@ -179,6 +172,8 @@ body {
   border-radius: 5px;
   position: relative;
   font-size: 20px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .checkedClass {
@@ -186,14 +181,11 @@ body {
   border-radius: 5px;
   position: relative;
   text-decoration: line-through;
+  display: flex;
+  justify-content: space-between;
 }
 
 /* -----------All animations------------ */
-
-.subTaskSubmit:hover {
-  background-color: blue;
-  color: white;
-}
 
 #taskSubmit:hover {
   background-color: blue;
@@ -205,12 +197,22 @@ button:focus {
   outline: none;
 }
 
-#titleContainer li:hover,
-.subTaskList li:hover {
+li:hover {
   background: #ddd;
 }
 
 #titleContainer li:nth-child(odd),
 .subTaskList li:nth-child(odd) {
   background: #eeeeee;
+}
+
+.titleListDisplay img {
+  margin: 0.8% 0% 0% 0%;
+}
+.allHeaders img {
+  margin: 0.6% 0% 0.6% 0%;
+}
+
+.particularTaskHeader img {
+  margin: 1.8% 0% 0% 0%;
 }

@@ -35,13 +35,14 @@ const createTasks = function(task) {
     class="todoBox" 
     onclick="particularTask(${task.id})"
     >
-      <h4 class ="todoBoxHeader" >${task.title}</h4>
+    <div class="allHeaders">
+      <p style="margin:6px" >${task.title}</p>
       <img 
-        src="https://img.icons8.com/color/48/000000/delete-forever.png" 
-        alt = 'x' 
-        class = 'close' 
+        src="https://img.icons8.com/wired/64/000000/trash.png"
+        height="30px"
         onclick = 'removeTask(${task.id})'
       />
+      </div>
     </div>`;
   return convertHtmlToNode(taskHtml);
 };
@@ -57,18 +58,20 @@ const getClass = function(boolean) {
 const getSubTasksList = function(task) {
   const subTaskHtml = function(subTask) {
     const subTaskHtml = `<li ${getClass(subTask.done)} ">
+    <div>
       <input 
         type="checkbox" 
         ${isChecked(subTask.done)} 
         onclick="toggleDone(${task.id},${subTask.id})"
       >
       ${subTask.text}
+      </div>
+      <div>
       <img 
-        src="https://img.icons8.com/color/48/000000/delete-forever.png" 
-        class = 'close' 
-        height ="30px" 
-        onclick="removeSubTask(${task.id},${subTask.id})"
+        src="https://img.icons8.com/ios-glyphs/30/000000/cancel.png"
+        onclick="removeSubTask(${task.id},${subTask.id})" height ="22px"
       />
+      </div>
     </li>`;
     return subTaskHtml;
   };
@@ -79,8 +82,8 @@ const particularTaskView = function(task) {
   const particularTaskHtml = `<div class="particularTask">
     <div class="particularTaskHeader">
       <h1>${task.title}</h1>
-      <img src="https://img.icons8.com/color/48/000000/delete-forever.png" 
-           alt = 'x' class = 'close' onclick = 'removeTask(${task.id})'
+      <img src="https://img.icons8.com/wired/64/000000/trash.png"
+           height="40px" onclick = 'removeTask(${task.id})'
       />
     </div>
     <ul class ="subTaskList">${getSubTasksList(task)}</ul>
@@ -95,8 +98,7 @@ const createTitle = function(task) {
   >
     ${task.title}
     <img 
-      src="https://img.icons8.com/color/48/000000/delete-forever.png"
-      class = 'close' 
+      src="https://img.icons8.com/wired/64/000000/trash.png"
       onclick = 'removeTask(${task.id})' 
       height ="17px"
     />
@@ -107,7 +109,7 @@ const createTitle = function(task) {
 const createReturnBar = function(task) {
   const returnHtml = `<div class="returnBar">
     <img 
-      src="https://img.icons8.com/plasticine/100/000000/return.png" 
+      src="https://img.icons8.com/carbon-copy/100/000000/return.png"
       onclick = "loadHomePage()" 
       height ="30px"
     >
@@ -119,10 +121,9 @@ const createReturnBar = function(task) {
         placeholder="Tasks..."
       />
       <button 
-        class=".subTaskSubmit"
         onclick="addNewSubTask(${task.id})"
       >
-        Add
+      Add
       </button>
     </div>
   </div>`;
