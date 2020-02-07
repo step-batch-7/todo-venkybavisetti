@@ -24,7 +24,7 @@ body {
   width: 20%;
   padding: 10px;
   font-size: 16px;
-  background-color: lightblue;
+  background-color: gray;
   border: 0px;
   cursor: pointer;
 }
@@ -81,7 +81,13 @@ body {
   height: 76%;
   overflow: scroll;
 }
-
+#titleHeaderOfContainer {
+  border: 1px solid black;
+  margin: 0px;
+  background-color: grey;
+  text-align: center;
+  border-radius: 10px;
+}
 #titleContainer {
   list-style-type: none;
   cursor: pointer;
@@ -93,6 +99,7 @@ body {
 .titleListDisplay {
   border-radius: 5px;
   display: flex;
+  font-size: medium;
   justify-content: space-between;
   background-color: #eeeeee;
 }
@@ -132,9 +139,14 @@ body {
 }
 
 .subTaskAdder {
-  width: 75%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
-
+.subTaskButton {
+  background-color: gray;
+  border-radius: 5px;
+}
 .subTaskInput {
   width: 50%;
   padding: 10px;
@@ -181,11 +193,10 @@ body {
 .checkedClass {
   background-color: dimgray;
   font-weight: 100;
-  color: rgb(194, 185, 185)70);
+  color: rgb(194, 185, 185);
 }
 
 /* -----------All animations------------ */
-
 #taskSubmit:hover {
   background-color: blue;
   color: white;
@@ -215,4 +226,16 @@ button:focus {
 .unCheckedClass:hover,
 .checkedClass:hover {
   background-color: #aaa;
+}
+
+.unCheckedClass > img,
+.checkedClass > img,
+.titleListDisplay > img {
+  display: none;
+}
+
+.unCheckedClass:hover > img,
+.checkedClass:hover > img,
+.titleListDisplay:hover > img {
+  display: inline;
 }

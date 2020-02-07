@@ -6,7 +6,7 @@ const defaultPort = 4000;
 const setUpDataBase = function() {
   const data = `${__dirname}/data`;
   if (!fs.existsSync(`${data}`)) {
-    fs.mkdirSync(`${data}`);
+    fs.mkdirSync(data);
   }
 };
 

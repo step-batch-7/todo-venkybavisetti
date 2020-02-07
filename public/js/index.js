@@ -66,12 +66,10 @@ const getSubTasksList = function(task) {
         >
         ${subTask.text}
       </div>
-      <div>
-        <img 
-          src="https://img.icons8.com/ios-glyphs/30/000000/cancel.png"
-          onclick="removeSubTask(${task.id},${subTask.id})" height ="22px"
-        />
-      </div>
+      <img 
+        src="https://img.icons8.com/ios-glyphs/30/000000/cancel.png"
+        onclick="removeSubTask(${task.id},${subTask.id})" height ="22px"
+      />
     </li>`;
     subTask.done
       ? subTaskList.push(subTaskHtml)
@@ -125,8 +123,9 @@ const createReturnBar = function(task) {
       />
       <button 
         onclick="addNewSubTask(${task.id})"
+        class="subTaskButton"
       >
-      Add
+      <img src="images/add.svg" height="30px"/>
       </button>
     </div>
   </div>`;
