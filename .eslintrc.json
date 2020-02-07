@@ -83,7 +83,6 @@
     "no-proto": "error",
     "prefer-spread": "warn",
     "no-useless-call": "error",
-    "no-param-reassign": "error",
     "space-infix-ops": "error",
     "no-multi-spaces": "error",
     "semi-spacing": "error",
@@ -114,6 +113,14 @@
       "rules": {
         "no-unused-vars": "off",
         "no-console": "off"
+      }
+    },
+    {
+      "files": [
+        "public/js/*.js"
+      ],
+      "rules": {
+        "no-undef": "off"
       }
     }
   ]

@@ -1,29 +1,3 @@
-const statusCode = { ok: 200 };
-
-const postHttpMsg = function(url, callback, message) {
-  const req = new XMLHttpRequest();
-  req.onload = function() {
-    if (this.status === statusCode.ok) {
-      callback(this.responseText);
-    }
-  };
-  req.open('POST', url);
-  req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  req.send(message);
-};
-
-const getHttpMsg = function(url, callback) {
-  const req = new XMLHttpRequest();
-  req.onload = function() {
-    if (this.status === statusCode.ok) {
-      callback(this.responseText);
-    }
-  };
-  req.open('GET', url);
-  req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  req.send();
-};
-
 const convertHtmlToNode = function(html) {
   const temp = document.createElement('div');
   temp.innerHTML = html;
@@ -40,7 +14,6 @@ const getStatus = function(subTasks) {
     notDoneTasks: subTasks.length - doneTasks
   };
 };
-
 const createTasks = function(task) {
   const taskStatus = getStatus(task.tasks);
   const taskHtml = `<div 
@@ -183,50 +156,4 @@ const generateParticularTask = function(text) {
   taskContainer.innerHTML = '';
   taskContainer.appendChild(createReturnBar(arrayOfObjects));
   taskContainer.appendChild(particularTaskView(arrayOfObjects));
-};
-
-const addNewTask = function() {
-  const newTaskInput = document.querySelector('#taskInput');
-  const newTask = newTaskInput.value;
-  newTaskInput.value = '';
-  postHttpMsg('/addTask', generateTodoTasks, `title=${newTask}`);
-};
-
-const addNewSubTask = function(id) {
-  const newSubTaskInput = document.querySelector('.subTaskInput');
-  const newSubTask = newSubTaskInput.value;
-  newSubTaskInput.value = '';
-  postHttpMsg(
-    '/addSubTask',
-    generateParticularTask,
-    `subTask=${newSubTask}&id=${id}`
-  );
-};
-
-const removeTask = function(id) {
-  postHttpMsg('/removeTask', generateTodoTasks, `id=${id}`);
-};
-
-const removeSubTask = function(taskId, subTaskId) {
-  postHttpMsg(
-    '/removeSubTask',
-    generateParticularTask,
-    `taskId=${taskId}&subTaskId=${subTaskId}`
-  );
-};
-
-const toggleDone = function(taskId, subTaskId) {
-  postHttpMsg(
-    '/toggleDone',
-    generateParticularTask,
-    `taskId=${taskId}&subTaskId=${subTaskId}`
-  );
-};
-
-const particularTask = function(id) {
-  postHttpMsg('/viewParticularTask', generateParticularTask, `id=${id}`);
-};
-
-const loadHomePage = function() {
-  getHttpMsg('/loadHomePage', generateTodoTasks);
 };

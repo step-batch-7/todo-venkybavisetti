@@ -1,0 +1,104 @@
+img {
+  cursor: pointer;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+.bodyHeader {
+  background-color: black;
+  padding: 30px 40px;
+  color: white;
+}
+
+#taskInput {
+  width: 75%;
+  padding: 10px;
+  font-size: 16px;
+  border: 0px;
+}
+
+#taskSubmit {
+  width: 20%;
+  padding: 10px;
+  font-size: 16px;
+  background-color: gray;
+  border: 0px;
+  cursor: pointer;
+}
+
+#TodoContainer {
+  height: 590px;
+  border-radius: 5px;
+  border: 2px solid black;
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#smartContainer {
+  height: 590px;
+  width: 20%;
+  border-radius: 3px;
+  border-right: 1px solid black;
+}
+
+#todoAnimation {
+  height: 24%;
+  border-bottom: black solid 1px;
+  border-radius: 5px;
+}
+
+.animationOfText {
+  color: white;
+  font-size: 60px;
+  letter-spacing: 6px;
+  margin-bottom: 20px;
+  position: relative;
+  color: black;
+  animation: text 3s 1;
+}
+
+@keyframes text {
+  0% {
+    font-size: small;
+  }
+  30% {
+    letter-spacing: 25px;
+    color: black;
+    font-size: small;
+  }
+
+  80% {
+    color: black;
+    letter-spacing: 8px;
+  }
+}
+
+#onlyTitles {
+  height: 76%;
+  overflow: scroll;
+}
+#titleHeaderOfContainer {
+  border: 1px solid black;
+  margin: 0px;
+  background-color: grey;
+  text-align: center;
+  border-radius: 10px;
+}
+#titleContainer {
+  list-style-type: none;
+  cursor: pointer;
+  position: relative;
+  padding: 5px;
+  margin: 0;
+}
+
+.titleListDisplay {
+  border-radius: 5px;
+  display: flex;
+  font-size: medium;
+  justify-content: space-between;
+  background-color: #eeeeee;
+}
