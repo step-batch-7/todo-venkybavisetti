@@ -1,3 +1,8 @@
+const focusOnTask = function() {
+  const edition = document.querySelector('.titleName');
+  edition.focus();
+};
+
 const convertHtmlToNode = function(html) {
   const temp = document.createElement('div');
   temp.innerHTML = html;
@@ -95,11 +100,12 @@ const particularTaskView = function(task) {
         class="titleName"
           onfocusout="editTask(${task.id})"
           value=${task.title}
+          onfocus="this.selectionEnd = this.value.length"
         >
         </>
       ${getStatusHtml(task)}
-      <div style="margin-top:19px">
-        <img src="images/edit.svg" height="40px">
+      <div class="particularOptions">
+        <img src="images/edit.svg" height="40px" onclick="focusOnTask()">
         <img 
           src="images/delete.svg"
           height="40px" onclick = 'removeTask(${task.id})'

@@ -72,6 +72,10 @@
   margin: 2px;
 }
 
+.particularOptions {
+  margin-top: 19px;
+}
+
 .subTaskAdder {
   width: 100%;
   display: flex;
