@@ -4,7 +4,8 @@
 }
 
 input[type='text']:focus,
-button:focus {
+button:focus,
+.particularTaskHeader h1:focus {
   outline: none;
 }
 

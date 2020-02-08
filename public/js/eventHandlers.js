@@ -28,6 +28,15 @@ const removeSubTask = function(taskId, subTaskId) {
   );
 };
 
+const editTask = function(taskId) {
+  const newTaskName = event.target.value;
+  postHttpMsg(
+    '/editTask',
+    generateParticularTask,
+    `taskId=${taskId}&title=${newTaskName}`
+  );
+};
+
 const toggleDone = function(taskId, subTaskId) {
   postHttpMsg(
     '/toggleDone',

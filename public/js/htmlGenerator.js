@@ -91,9 +91,14 @@ const getSubTasksList = function(task) {
 const particularTaskView = function(task) {
   const particularTaskHtml = `<div class="particularTask">
     <div class="particularTaskHeader">
-      <h1>${task.title}</h1>
+        <input type="text" 
+        class="titleName"
+          onfocusout="editTask(${task.id})"
+          value=${task.title}
+        >
+        </>
       ${getStatusHtml(task)}
-      <div>
+      <div style="margin-top:19px">
         <img src="images/edit.svg" height="40px">
         <img 
           src="images/delete.svg"
