@@ -22,7 +22,7 @@ const createTasks = function(task) {
     <div class="allHeaders">
       <p style="margin:6px" >${task.title}</p>
       <img 
-        src="https://img.icons8.com/wired/64/000000/trash.png"
+        src="images/delete.svg"
         height="30px"
         onclick = 'removeTask(${task.id})'
       />
@@ -49,14 +49,14 @@ const getStatusHtml = function(task) {
     <span class="tasksDone">
       <p style="margin:1px">${taskStatus.doneTasks}</p>
       <img 
-        src="https://img.icons8.com/doodle/48/000000/checkmark.png" 
+        src="images/done.svg" 
         height="20"
       >
     </span>
     <span class="tasksNotDone">
       <p style="margin:0px">${taskStatus.notDoneTasks}</p>
       <img 
-        src="https://img.icons8.com/doodle/48/000000/delete-sign.png"
+        src="images/wrong.svg"
         height="17px"
       >
     </span>
@@ -76,7 +76,7 @@ const getSubTasksList = function(task) {
         ${subTask.text}
       </div>
       <img 
-        src="https://img.icons8.com/ios-glyphs/30/000000/cancel.png"
+        src="images/cancel.svg"
         onclick="removeSubTask(${task.id},${subTask.id})" height ="22px"
       />
     </li>`;
@@ -93,10 +93,13 @@ const particularTaskView = function(task) {
     <div class="particularTaskHeader">
       <h1>${task.title}</h1>
       ${getStatusHtml(task)}
-      <img 
-        src="https://img.icons8.com/wired/64/000000/trash.png"
-        height="40px" onclick = 'removeTask(${task.id})'
-      />
+      <div>
+        <img src="images/edit.svg" height="40px">
+        <img 
+          src="images/delete.svg"
+          height="40px" onclick = 'removeTask(${task.id})'
+        />
+      </div>
     </div>
     <ul class ="subTaskList">${getSubTasksList(task)}</ul>
   </div>`;
@@ -110,7 +113,7 @@ const createTitle = function(task) {
   >
     ${task.title}
     <img 
-      src="https://img.icons8.com/wired/64/000000/trash.png"
+      src="images/delete.svg"
       onclick = 'removeTask(${task.id})' 
       height ="17px"
     />
@@ -121,7 +124,7 @@ const createTitle = function(task) {
 const createReturnBar = function(task) {
   const returnHtml = `<div class="returnBar">
     <img 
-      src="https://img.icons8.com/carbon-copy/100/000000/return.png"
+      src="images/return.png"
       onclick = "loadHomePage()" 
       height ="30px"
     >
