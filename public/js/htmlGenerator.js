@@ -15,7 +15,6 @@ const getStatus = function(subTasks) {
   };
 };
 const createTasks = function(task) {
-  const taskStatus = getStatus(task.tasks);
   const taskHtml = `<div 
     class="todoBox" 
     onclick="particularTask(${task.id})"
@@ -28,11 +27,7 @@ const createTasks = function(task) {
         onclick = 'removeTask(${task.id})'
       />
       </div>
-      <div class="statusBar">
-        <span class="totalTasks">Total Tasks :- ${taskStatus.totalTasks}</span>
-        <span class="tasksDone">${taskStatus.doneTasks}</span>
-        <span class="tasksNotDone">${taskStatus.notDoneTasks}</span>
-      </div>
+      ${getStatusHtml(task)}
     </div>`;
   return convertHtmlToNode(taskHtml);
 };
@@ -43,6 +38,30 @@ const isChecked = function(boolean) {
 
 const getClass = function(boolean) {
   return boolean ? 'class="checkedClass"' : 'class="unCheckedClass"';
+};
+
+const getStatusHtml = function(task) {
+  const taskStatus = getStatus(task.tasks);
+  const html = `  <div class="statusBar">
+    <span class="totalTasks">
+      Total Tasks :- ${taskStatus.totalTasks}
+    </span>
+    <span class="tasksDone">
+      <p style="margin:1px">${taskStatus.doneTasks}</p>
+      <img 
+        src="https://img.icons8.com/doodle/48/000000/checkmark.png" 
+        height="20"
+      >
+    </span>
+    <span class="tasksNotDone">
+      <p style="margin:0px">${taskStatus.notDoneTasks}</p>
+      <img 
+        src="https://img.icons8.com/doodle/48/000000/delete-sign.png"
+        height="17px"
+      >
+    </span>
+  </div>`;
+  return html;
 };
 
 const getSubTasksList = function(task) {
@@ -70,19 +89,13 @@ const getSubTasksList = function(task) {
 };
 
 const particularTaskView = function(task) {
-  const taskStatus = getStatus(task.tasks);
   const particularTaskHtml = `<div class="particularTask">
     <div class="particularTaskHeader">
       <h1>${task.title}</h1>
-      <div class="statusBar">
-        <span class="totalTasksInParticularTask">
-          Total Tasks :- ${taskStatus.totalTasks}
-        </span>
-        <span class="tasksDone">${taskStatus.doneTasks}</span>
-        <span class="tasksNotDone">${taskStatus.notDoneTasks}</span>
-      </div>
-      <img src="https://img.icons8.com/wired/64/000000/trash.png"
-           height="40px" onclick = 'removeTask(${task.id})'
+      ${getStatusHtml(task)}
+      <img 
+        src="https://img.icons8.com/wired/64/000000/trash.png"
+        height="40px" onclick = 'removeTask(${task.id})'
       />
     </div>
     <ul class ="subTaskList">${getSubTasksList(task)}</ul>

@@ -31,19 +31,24 @@
   padding: 5px;
 }
 
-.totalTasks,
-.totalTasksInParticularTask {
+.totalTasks {
   background-color: darkgray;
-}
-.totalTasksInParticularTask {
   width: 150px;
 }
+
+/* .totalTasksInParticularTask {
+  width: 150px;
+} */
 .tasksDone {
   background-color: lightgreen;
   margin: 0% 1%;
+  display: flex;
+  justify-content: space-between;
 }
 .tasksNotDone {
   background-color: lightsalmon;
+  display: flex;
+  justify-content: space-between;
 }
 .allHeaders {
   font-size: 25px;
