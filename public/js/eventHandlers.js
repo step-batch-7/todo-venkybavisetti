@@ -39,6 +39,15 @@ const editTask = function(taskId) {
   );
 };
 
+const editSubTask = function(taskId, subTaskId) {
+  const newSubTaskName = event.target.innerText;
+  postHttpMsg(
+    '/editSubTask',
+    generateParticularTask,
+    `taskId=${taskId}&subTaskId=${subTaskId}&subTitle=${newSubTaskName}`
+  );
+};
+
 const toggleDone = function(taskId, subTaskId) {
   postHttpMsg(
     '/toggleDone',

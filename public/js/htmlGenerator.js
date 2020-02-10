@@ -71,15 +71,21 @@ const getStatusHtml = function(task) {
 
 const getSubTasksList = function(task) {
   const subTaskHtml = function(subTaskList, subTask) {
-    const subTaskHtml = `<li ${getClass(subTask.done)} ">
-      <div>
+    const subTaskHtml = `<li ${getClass(subTask.done)} >
+      <div >
         <input 
           type="checkbox" 
           ${isChecked(subTask.done)} 
           onclick="toggleDone(${task.id},${subTask.id})"
         >
-        ${subTask.text}
+        <span 
+          contenteditable class="subTaskText"
+          onfocusout="editSubTask(${task.id},${subTask.id})"
+        >
+          ${subTask.text}
+        </span>
       </div>
+      <img scr="images/subTaskEdit.svg" height ="22px"/>
       <img 
         src="images/cancel.svg"
         onclick="removeSubTask(${task.id},${subTask.id})" height ="22px"

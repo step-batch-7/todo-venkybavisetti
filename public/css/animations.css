@@ -5,6 +5,8 @@
 
 input[type='text']:focus,
 button:focus,
+li:focus,
+.subTaskText:focus,
 .particularTaskHeader h1:focus {
   outline: none;
 }
