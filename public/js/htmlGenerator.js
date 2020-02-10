@@ -3,6 +3,11 @@ const focusOnTask = function() {
   edition.focus();
 };
 
+const focusOnSubTask = function() {
+  const edition = document.querySelector('.subTaskText');
+  edition.focus();
+};
+
 const convertHtmlToNode = function(html) {
   const temp = document.createElement('div');
   temp.innerHTML = html;
@@ -85,11 +90,13 @@ const getSubTasksList = function(task) {
           ${subTask.text}
         </span>
       </div>
-      <img scr="images/subTaskEdit.svg" height ="22px"/>
+      <div class = "subTaskImages">
+      <span style='margin-top:2px'><img src="images/subTaskEdit.svg" height ="18px" onclick="focusOnSubTask()"/></span>
       <img 
         src="images/cancel.svg"
         onclick="removeSubTask(${task.id},${subTask.id})" height ="22px"
       />
+      </div>
     </li>`;
     subTask.done
       ? subTaskList.push(subTaskHtml)
