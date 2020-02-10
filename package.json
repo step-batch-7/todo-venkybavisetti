@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "test": "mocha"
+    "test": "export DATA_STORE='test/resource/todoList.json'; mocha",
+    "lint": "eslint *.js lib/*.js test/*.js public/js/*.js",
+    "cover": "nyc npm test",
+    "alltests": "npm run cover && npm run lint",
+    "start": "export DATA_STORE='data/todoList.json'; node server.js"
   },
   "repository": {
     "type": "git",
