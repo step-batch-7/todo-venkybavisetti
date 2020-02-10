@@ -51,6 +51,13 @@ describe('GET', () => {
       .expect(200)
       .expect('Content-Type', 'text/css', done);
   });
+  it('should get loadHomePage', done => {
+    request(App)
+      .get('/loadHomePage')
+      .set('Accept', '*/*')
+      .expect(200)
+      .expect('Content-Type', 'application/json', done);
+  });
 });
 
 describe('POST', () => {
