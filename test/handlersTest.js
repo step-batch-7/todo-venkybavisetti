@@ -69,4 +69,11 @@ describe('POST', () => {
       .expect(200)
       .expect('Content-Type', 'application/json', done);
   });
+  it('should post the id to delete', done => {
+    request(App)
+      .post('/removeTask')
+      .send('id=1')
+      .expect(200)
+      .expect('Content-Type', 'application/json', done);
+  });
 });

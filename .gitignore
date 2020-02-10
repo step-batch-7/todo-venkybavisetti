@@ -1,3 +1,5 @@
 node_modules/
 data/
 rough.js
+.nyc_output/
+.vscode/
