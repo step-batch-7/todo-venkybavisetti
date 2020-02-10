@@ -29,7 +29,7 @@ describe('METHOD NOT ALLOWED', () => {
   });
 });
 
-describe('GET Home page', () => {
+describe('GET', () => {
   it('should get the home page / path', done => {
     request(app.serve.bind(app))
       .get('/')
@@ -73,6 +73,26 @@ describe('POST', () => {
     request(App)
       .post('/removeTask')
       .send('id=1')
+      .expect(200)
+      .expect('Content-Type', 'application/json', done);
+  });
+  it('should post the todo id and task to add new task to a todo', done => {
+    sinon.replace(fs, 'readFileSync', () => {
+      return '[{"title": "venkatesh","id": 1,"tasks": [{ "text": "tiger", "done": true, "id": 1 }]}]';
+    });
+    request(App)
+      .post('/addSubTask')
+      .send('subTask=1&id=1')
+      .expect(200)
+      .expect('Content-Type', 'application/json', done);
+  });
+  it('should post todo id and task id to delete a task from a todo', done => {
+    sinon.replace(fs, 'readFileSync', () => {
+      return '[{"title": "venkatesh","id": 1,"tasks": [{ "text": "tiger", "done": true, "id": 1 }]}]';
+    });
+    request(App)
+      .post('/removeSubTask')
+      .send('taskId=1&subTaskId=1')
       .expect(200)
       .expect('Content-Type', 'application/json', done);
   });
