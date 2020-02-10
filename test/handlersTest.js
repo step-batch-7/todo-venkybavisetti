@@ -113,6 +113,16 @@ describe('POST', () => {
     });
     request(App)
       .post('/editTask')
+      .send('taskId=1')
+      .expect(200)
+      .expect('Content-Type', 'application/json', done);
+  });
+  it('should post todo id and task id to change a task status', done => {
+    sinon.replace(fs, 'readFileSync', () => {
+      return '[{"title": "venkatesh","id": 1,"tasks": [{ "text": "tiger", "done": true, "id": 1 }]}]';
+    });
+    request(App)
+      .post('/editSubTask')
       .send('taskId=1&subTaskId=1')
       .expect(200)
       .expect('Content-Type', 'application/json', done);
