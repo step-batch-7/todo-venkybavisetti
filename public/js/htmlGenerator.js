@@ -15,7 +15,6 @@ const convertHtmlToNode = function(html) {
 };
 
 const getStatus = function(subTasks) {
-  console.log(subTasks, 'inside get status');
   const doneTasks = subTasks.reduce((doneNum, task) => {
     return task.done ? ++doneNum : doneNum;
   }, 0);
@@ -52,7 +51,6 @@ const getClass = function(boolean) {
 };
 
 const getStatusHtml = function(task) {
-  console.log(task, 'inside get status html');
   const taskStatus = getStatus(task.tasks);
   const html = `  <div class="statusBar">
     <span class="totalTasks">
