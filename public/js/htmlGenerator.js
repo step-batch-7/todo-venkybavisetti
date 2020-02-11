@@ -15,6 +15,7 @@ const convertHtmlToNode = function(html) {
 };
 
 const getStatus = function(subTasks) {
+  console.log(subTasks, 'inside get status');
   const doneTasks = subTasks.reduce((doneNum, task) => {
     return task.done ? ++doneNum : doneNum;
   }, 0);

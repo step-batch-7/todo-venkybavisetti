@@ -2,7 +2,9 @@ const addNewTask = function() {
   const newTaskInput = document.querySelector('#taskInput');
   const newTask = newTaskInput.value;
   newTaskInput.value = '';
-  if (newTask === '') return;
+  if (newTask === '') {
+    return;
+  }
   postHttpMsg('/addTask', generateTodoTasks, `title=${newTask}`);
 };
 
@@ -10,7 +12,9 @@ const addNewSubTask = function(id) {
   const newSubTaskInput = document.querySelector('.subTaskInput');
   const newSubTask = newSubTaskInput.value;
   newSubTaskInput.value = '';
-  if (newSubTask === '') return;
+  if (newSubTask === '') {
+    return;
+  }
   postHttpMsg(
     '/addSubTask',
     generateParticularTask,

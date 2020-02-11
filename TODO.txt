@@ -19,3 +19,11 @@ create home page for todo
 --Done--  >add titles to add tasks
 
 add subTasks
+
+---------
+Pairing:
+1) problem in  assigning id whenever i will close the server the id will start from one so we need a mechanism to solve that problem.
+2) while editing task or subtask for wrong spelling it is showing error we don't want that underline so we have to remove that line.
+3) Want to add some space between edit icon and delete icon.
+4) give style of h2 tag of class body header in css file
+6) delete tags class like p,ul, li and merge with div classes.

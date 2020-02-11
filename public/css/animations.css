@@ -3,11 +3,11 @@
   color: white;
 }
 
-input[type='text']:focus,
-button:focus,
-li:focus,
-.subTaskText:focus,
-.particularTaskHeader h1:focus {
+input[type='text'],
+button,
+li,
+.subtaskText,
+.particularTaskHeader > h1 {
   outline: none;
 }
 
