@@ -22,15 +22,16 @@ add subTasks
 
 ---------
 Pairing:
-* Todo class has to made it has to manage all behavior related to todoList.
+--done-- * Todo class has to made it has to manage all behavior related to todoList.
   --done-- addNewTask
   --done-- deleteTask
-  getParticularTask
-  addSubTask
-  deleteSubTask
-  toggleDone
-  editTask
-  editSubTask
+  --done-- getParticularTask
+  --done-- addSubTask
+  --done-- deleteSubTask
+  --done-- toggleDone
+  --done-- editTask
+  --done-- editSubTask
+
 * problem in  assigning id whenever i will close the server the id will start from one so we need a mechanism to solve that problem.
 * while editing task or subtask for wrong spelling it is showing error we don't want that underline so we have to remove that line.
 * Want to add some space between edit icon and delete icon.
