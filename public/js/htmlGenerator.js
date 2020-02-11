@@ -52,6 +52,7 @@ const getClass = function(boolean) {
 };
 
 const getStatusHtml = function(task) {
+  console.log(task, 'inside get status html');
   const taskStatus = getStatus(task.tasks);
   const html = `  <div class="statusBar">
     <span class="totalTasks">
