@@ -1,30 +1,37 @@
 <html>
-  <head>
-    <title>TODO</title>
-    <link rel="stylesheet" href="css/homeStyle.css" />
-    <link rel="stylesheet" href="css/particularTaskStyle.css" />
-    <link rel="stylesheet" href="css/animations.css" />
-    <script src="js/xmlHttpRequest.js"></script>
-    <script src="js/eventHandlers.js"></script>
-    <script src="js/htmlGenerator.js"></script>
-  </head>
-  <body onload="loadHomePage()">
-    <div class="bodyHeader">
-      <h2 style="text-align: center;">To Do List</h2>
-      <input type="text" name="title" id="taskInput" placeholder="Title..." />
-      <button id="taskSubmit" onclick="addNewTask()">Add</button>
+
+<head>
+  <title>TODO</title>
+  <link rel="stylesheet" href="css/homeStyle.css" />
+  <link rel="stylesheet" href="css/particularTaskStyle.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <script src="js/xmlHttpRequest.js"></script>
+  <script src="js/eventHandlers.js"></script>
+  <script src="js/htmlGenerator.js"></script>
+</head>
+
+<body onload="loadHomePage()">
+  <div class="bodyHeader">
+    <div class="searchTask" oninput="searchTask()">
+      <input type="search" placeholder="Search your task here...">
+      <img src="/images/search.svg" alt="searchIcon">
     </div>
-    <div id="TodoContainer">
-      <div id="smartContainer">
-        <div id="todoAnimation">
-          <span class="animationOfText"> My Todo Work</span>
-        </div>
-        <div id="onlyTitles">
-          <p id="titleHeaderOfContainer">All Tasks You Have</p>
-          <ul id="titleContainer"></ul>
-        </div>
+    <h2>To Do List</h2>
+    <input type="text" name="title" id="taskInput" placeholder="Title..." />
+    <button id="addTitle" onclick="addNewTask()">Add</button>
+  </div>
+  <div id="container">
+    <div id="smartContainer">
+      <div id="todoAnimation">
+        <span class="animationOfText"> My Todo Work</span>
       </div>
-      <div id="taskContainer"></div>
+      <div id="onlyTitles">
+        <p id="titleHeaderOfContainer">All Tasks You Have</p>
+        <ul id="titleContainer"></ul>
+      </div>
     </div>
-  </body>
+    <div id="taskContainer"></div>
+  </div>
+</body>
+
 </html>

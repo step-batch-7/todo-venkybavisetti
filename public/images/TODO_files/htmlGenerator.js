@@ -27,11 +27,10 @@ const getStatus = function(subTasks) {
 const createTasks = function(task) {
   const taskHtml = `<div 
     class="todoBox" 
-   id="${task.id}"
+    onclick="particularTask(${task.id})"
     >
     <div class="allHeaders">
-      <p style="margin:6px"  onclick="particularTask(${task.id})">
-      ${task.title}</p>
+      <p style="margin:6px" >${task.title}</p>
       <img 
         src="images/delete.svg"
         height="30px"

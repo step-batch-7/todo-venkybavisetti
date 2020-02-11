@@ -32,8 +32,10 @@ Pairing:
   --done-- editTask
   --done-- editSubTask
 
-* problem in  assigning id whenever i will close the server the id will start from one so we need a mechanism to solve that problem.
-* while editing task or subtask for wrong spelling it is showing error we don't want that underline so we have to remove that line.
-* Want to add some space between edit icon and delete icon.
-* give style of h2 tag of class body header in css file
+--done--* problem in  assigning id whenever i will close the server the id will start from one so we need a mechanism to solve that problem.
+--done--* while editing task or subtask for wrong spelling it is showing error we don't want that underline so we have to remove that line.
+--done--* Want to add some space between edit icon and delete icon.
+--done--* give style of h2 tag of class body header in css file
+--done--* Search by task. 
+* Search by subTask.
 * delete tags class like p,ul, li and merge with div classes.

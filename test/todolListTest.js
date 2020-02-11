@@ -1,6 +1,4 @@
 'use strict';
-// const request = require('supertest');
-// const sinon = require('sinon');
 const assert = require('assert');
 const { Todo } = require('../lib/todoList');
 

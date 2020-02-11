@@ -18,25 +18,15 @@ body {
 
 .searchTask {
   height: 2vw;
-  width: 25vw;
+  width: 20vw;
   background-color: white;
   border-radius: 1vw;
 }
 
 .searchTask > input {
-  margin-top: 0.12vw;
-  margin-left: 1vw;
-  outline: none;
-  border: none;
-  width: 85%;
-  font-size: 1.2vw;
-  font-weight: 250;
-}
-
-.searchTask > img {
-  height: 1.4vw;
-  width: 6%;
-  vertical-align: sub;
+  height: 2vw;
+  width: 80%;
+  font-size: 1.8vw;
 }
 
 #taskInput {
