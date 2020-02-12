@@ -139,4 +139,5 @@
 .subTaskList {
   height: 19.5vw;
   margin-bottom: 1vw;
+  overflow: scroll;
 }

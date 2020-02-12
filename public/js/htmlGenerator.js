@@ -48,8 +48,7 @@ const getClass = function(boolean) {
 
 const getStatusHtml = function(task) {
   const taskStatus = getStatus(task.tasks);
-  const html = `  <div class="statusBar">
-    <span class="totalTasks">
+  const html = `<span class="totalTasks">
       Total Tasks :- ${taskStatus.totalTasks}
     </span>
     <span class="tasksDone">
@@ -65,8 +64,7 @@ const getStatusHtml = function(task) {
         src="images/wrong.svg"
         height="17px"
       >
-    </span>
-  </div>`;
+    </span>`;
   return html;
 };
 
@@ -200,7 +198,9 @@ const createTasks = function(task) {
         onclick = 'removeTask(${task.id})'
       />
       </div>
+      <div class="statusBar">
       ${getStatusHtml(task)}
+      </div>
       <div class="subTaskList">
       ${getSubTasksList(task)}
       </div>
@@ -227,5 +227,10 @@ const generateParticularTask = function(taskDetails) {
   const container = document.querySelector(
     `[id="${taskDetails.id}"] .subTaskList`
   );
+  const statusBar = document.querySelector(
+    `[id="${taskDetails.id}"] .statusBar`
+  );
+  statusBar.innerHTML = '';
+  statusBar.innerHTML = getStatusHtml(taskDetails);
   container.innerHTML = task;
 };

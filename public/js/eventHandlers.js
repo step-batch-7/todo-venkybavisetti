@@ -9,16 +9,16 @@ const addNewTask = function() {
 };
 
 const addNewSubTask = function(id) {
-  const newSubTask =
-    event.target.parentElement.previousSibling.previousSibling.value;
-  if (newSubTask === '') {
+  const newSubTask = event.target.parentElement.previousSibling.previousSibling;
+  if (newSubTask.value === '') {
     return;
   }
   postHttpMsg(
     '/addSubTask',
     generateParticularTask,
-    `subTask=${newSubTask}&id=${id}`
+    `subTask=${newSubTask.value}&id=${id}`
   );
+  newSubTask.value = '';
 };
 
 const removeTask = function(id) {
