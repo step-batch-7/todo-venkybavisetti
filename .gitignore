@@ -3,3 +3,4 @@ data/
 rough.js
 .nyc_output/
 .vscode/
+.DS_Store
