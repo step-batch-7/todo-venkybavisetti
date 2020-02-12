@@ -66,6 +66,14 @@
   border-radius: 5px;
 }
 
+.allHeaders > p {
+  margin: 6px;
+}
+
+.allHeaders > img {
+  height: 30px;
+}
+
 .returnBar {
   display: flex;
   justify-content: space-between;

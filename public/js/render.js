@@ -86,7 +86,7 @@ const getSubTasksList = function(task) {
         </span>
       </div>
       <div class = "subTaskImages">
-      <span style='margin-top:2px'><img src="images/subTaskEdit.svg" height ="18px" onclick="focusOnSubTask()"/></span>
+      <span style='margin-top:2px'><img src="images/edit.svg" height ="18px" onclick="focusOnSubTask()"/></span>
       <img 
         src="images/cancel.svg"
         onclick="removeSubTask(${task.id},${subTask.id})" height ="22px"
@@ -135,42 +135,61 @@ const generateTodoTasks = function(arrayOfObjects) {
   setUpTaskContainer(arrayOfObjects);
 };
 
+const createSubTask = function(task) {
+  const subTaskHtml = `<div class="subTaskList">
+  ${getSubTasksList(task)}
+  </div>`;
+  return convertHtmlToNode(subTaskHtml);
+};
+
+const addSubTask = function(task) {
+  const subTaskAdderHtml = `<div class="subTaskAdder">
+  <input 
+    type="text" 
+    name="title" 
+    class="subTaskInput" 
+    placeholder="Tasks..."
+  />
+  <button 
+    onclick="addNewSubTask(${task.id})"
+    class="subTaskButton"
+  >
+  <img src="images/add.svg" height="30px"/>
+  </button>
+</div>`;
+  return convertHtmlToNode(subTaskAdderHtml);
+};
+
+const createStatusBar = function(task) {
+  const statusBar = `<div class="statusBar">
+  ${getStatusHtml(task)}
+  </div>`;
+  return convertHtmlToNode(statusBar);
+};
+
+const createTaskHeader = function(task) {
+  const taskHeader = document.createElement('div');
+  taskHeader.className = 'allHeaders';
+  const title = document.createElement('p');
+  title.innerText = task.title;
+  const deleteButton = document.createElement('img');
+  deleteButton.src = 'images/delete.svg';
+  deleteButton.onclick = () => removeTask(task.id);
+  taskHeader.appendChild(title);
+  taskHeader.appendChild(deleteButton);
+  return taskHeader;
+};
+
 const createTasks = function(task) {
-  const taskHtml = `<div 
-    class="todoBox" 
-   id="${task.id}"
-    >
-    <div class="allHeaders">
-      <p style="margin:6px"  >
-      ${task.title}</p>
-      <img 
-        src="images/delete.svg"
-        height="30px"
-        onclick = 'removeTask(${task.id})'
-      />
-      </div>
-      <div class="statusBar">
-      ${getStatusHtml(task)}
-      </div>
-      <div class="subTaskList">
-      ${getSubTasksList(task)}
-      </div>
-      <div class="subTaskAdder">
-      <input 
-        type="text" 
-        name="title" 
-        class="subTaskInput" 
-        placeholder="Tasks..."
-      />
-      <button 
-        onclick="addNewSubTask(${task.id})"
-        class="subTaskButton"
-      >
-      <img src="images/add.svg" height="30px"/>
-      </button>
-    </div>
-    </div>`;
-  return convertHtmlToNode(taskHtml);
+  const taskHeader = createTaskHeader(task);
+  const statusBar = createStatusBar(task);
+  const subTaskList = createSubTask(task);
+  const subTaskAdder = addSubTask(task);
+  const todoBox = document.createElement('div');
+  todoBox.className = 'todoBox';
+  const child = [taskHeader, statusBar, subTaskList, subTaskAdder];
+  child.forEach(child => todoBox.appendChild(child));
+  return todoBox;
 };
 
 const generateParticularTask = function(taskDetails) {
