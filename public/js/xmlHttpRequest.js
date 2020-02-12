@@ -4,7 +4,7 @@ const postHttpMsg = function(url, callback, message) {
   const req = new XMLHttpRequest();
   req.onload = function() {
     if (this.status === statusCode.ok) {
-      callback(this.responseText);
+      callback(JSON.parse(this.responseText));
     }
   };
   req.open('POST', url);
@@ -16,7 +16,7 @@ const getHttpMsg = function(url, callback) {
   const req = new XMLHttpRequest();
   req.onload = function() {
     if (this.status === statusCode.ok) {
-      callback(this.responseText);
+      callback(JSON.parse(this.responseText));
     }
   };
   req.open('GET', url);

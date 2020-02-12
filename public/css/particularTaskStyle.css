@@ -1,4 +1,6 @@
 #taskContainer {
+  display: flex;
+  flex-wrap: wrap;
   height: 590px;
   width: 80%;
   border-radius: 3px;
@@ -8,8 +10,9 @@
 
 .todoBox {
   background-color: rgb(189, 189, 189);
-  height: 100px;
-  margin: 2px;
+  height: 30vw;
+  width: 20vw;
+  margin: 2.8vw;
   border-radius: 5px;
   padding: 4px;
   position: relative;
@@ -27,7 +30,7 @@
 .statusBar {
   display: flex;
   justify-content: center;
-  margin-top: 25px;
+  margin: 1vw;
 }
 
 .totalTasks,
@@ -74,7 +77,6 @@
 }
 
 .subTaskAdder {
-  width: 100%;
   display: flex;
   justify-content: center;
 }
@@ -83,8 +85,8 @@
   border-radius: 5px;
 }
 .subTaskInput {
-  width: 50%;
   padding: 10px;
+  width: 95%;
   border: 0px;
   border-bottom: 1px solid black;
   border-radius: 5px;
@@ -115,10 +117,6 @@
   justify-content: space-between;
 }
 
-.subTaskList {
-  padding: 5px;
-}
-
 .unCheckedClass,
 .checkedClass {
   border-radius: 5px;
@@ -136,4 +134,9 @@
   font-weight: 100;
   color: rgb(194, 185, 185);
   font-style: italic;
+}
+
+.subTaskList {
+  height: 19.5vw;
+  margin-bottom: 1vw;
 }

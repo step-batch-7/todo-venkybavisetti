@@ -9,9 +9,8 @@ const addNewTask = function() {
 };
 
 const addNewSubTask = function(id) {
-  const newSubTaskInput = document.querySelector('.subTaskInput');
-  const newSubTask = newSubTaskInput.value;
-  newSubTaskInput.value = '';
+  const newSubTask =
+    event.target.parentElement.previousSibling.previousSibling.value;
   if (newSubTask === '') {
     return;
   }

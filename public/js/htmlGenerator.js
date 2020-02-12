@@ -37,24 +37,6 @@ const getStatus = function(subTasks) {
     notDoneTasks: subTasks.length - doneTasks
   };
 };
-const createTasks = function(task) {
-  const taskHtml = `<div 
-    class="todoBox" onclick="particularTask(${task.id})"
-   id="${task.id}"
-    >
-    <div class="allHeaders">
-      <p style="margin:6px"  >
-      ${task.title}</p>
-      <img 
-        src="images/delete.svg"
-        height="30px"
-        onclick = 'removeTask(${task.id})'
-      />
-      </div>
-      ${getStatusHtml(task)}
-    </div>`;
-  return convertHtmlToNode(taskHtml);
-};
 
 const isChecked = function(boolean) {
   return boolean ? 'checked' : '';
@@ -200,16 +182,50 @@ const setUpTaskContainer = function(tasks) {
   taskList.forEach(task => taskContainer.appendChild(task));
 };
 
-const generateTodoTasks = function(text) {
-  const arrayOfObjects = JSON.parse(text);
+const generateTodoTasks = function(arrayOfObjects) {
   setUpTitleContainer(arrayOfObjects);
   setUpTaskContainer(arrayOfObjects);
 };
+const createTasks = function(task) {
+  const taskHtml = `<div 
+    class="todoBox" 
+   id="${task.id}"
+    >
+    <div class="allHeaders">
+      <p style="margin:6px"  >
+      ${task.title}</p>
+      <img 
+        src="images/delete.svg"
+        height="30px"
+        onclick = 'removeTask(${task.id})'
+      />
+      </div>
+      ${getStatusHtml(task)}
+      <div class="subTaskList">
+      ${getSubTasksList(task)}
+      </div>
+      <div class="subTaskAdder">
+      <input 
+        type="text" 
+        name="title" 
+        class="subTaskInput" 
+        placeholder="Tasks..."
+      />
+      <button 
+        onclick="addNewSubTask(${task.id})"
+        class="subTaskButton"
+      >
+      <img src="images/add.svg" height="30px"/>
+      </button>
+    </div>
+    </div>`;
+  return convertHtmlToNode(taskHtml);
+};
 
-const generateParticularTask = function(text) {
-  const arrayOfObjects = JSON.parse(text);
-  const taskContainer = document.getElementById('taskContainer');
-  taskContainer.innerHTML = '';
-  taskContainer.appendChild(createReturnBar(arrayOfObjects));
-  taskContainer.appendChild(particularTaskView(arrayOfObjects));
+const generateParticularTask = function(taskDetails) {
+  const task = getSubTasksList(taskDetails);
+  const container = document.querySelector(
+    `[id="${taskDetails.id}"] .subTaskList`
+  );
+  container.innerHTML = task;
 };
