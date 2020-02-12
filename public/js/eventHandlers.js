@@ -60,10 +60,6 @@ const toggleDone = function(taskId, subTaskId) {
   );
 };
 
-const particularTask = function(id) {
-  postHttpMsg('/viewParticularTask', generateParticularTask, `id=${id}`);
-};
-
 const loadHomePage = function() {
   getHttpMsg('/loadHomePage', generateTodoTasks);
 };

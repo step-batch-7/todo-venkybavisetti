@@ -103,20 +103,4 @@ describe('TODO class', () => {
       });
     });
   });
-  describe('getTask', () => {
-    it('should get the task from the todoList', () => {
-      const todoList = [
-        {
-          id: 1,
-          tasks: []
-        }
-      ];
-      const todo = new Todo(todoList);
-      const actual = todo.getTask(1);
-      assert.deepStrictEqual(actual, {
-        id: 1,
-        tasks: []
-      });
-    });
-  });
 });

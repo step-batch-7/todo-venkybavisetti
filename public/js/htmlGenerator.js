@@ -101,69 +101,19 @@ const getSubTasksList = function(task) {
   return task.tasks.reduce(subTaskHtml, []).join('');
 };
 
-const particularTaskView = function(task) {
-  const particularTaskHtml = `<div class="particularTask">
-    <div class="particularTaskHeader">
-        <input type="text" 
-        class="titleName"
-        spellcheck="false"
-          onfocusout="editTask(${task.id})"
-          value=${task.title}
-          onfocus="this.selectionEnd = this.value.length"
-        >
-        </>
-      ${getStatusHtml(task)}
-      <div class="particularOptions">
-        <img src="images/edit.svg" height="40px" onclick="focusOnTask()">
-        <img 
-          src="images/delete.svg"
-          height="40px" onclick = 'removeTask(${task.id})'
-        />
-      </div>
-    </div>
-    <ul class ="subTaskList">${getSubTasksList(task)}</ul>
-  </div>`;
-  return convertHtmlToNode(particularTaskHtml);
-};
-
 const createTitle = function(task) {
-  const titleHtml = `<li 
-    onclick="particularTask(${task.id})" 
+  const titleHtml = `<li
+    onclick="particularTask(${task.id})"
     class="titleListDisplay"
   >
     ${task.title}
-    <img 
+    <img
       src="images/delete.svg"
-      onclick = 'removeTask(${task.id})' 
+      onclick = 'removeTask(${task.id})'
       height ="17px"
     />
   </li>`;
   return convertHtmlToNode(titleHtml);
-};
-
-const createReturnBar = function(task) {
-  const returnHtml = `<div class="returnBar">
-    <img 
-      src="images/return.png"
-      onclick = "loadHomePage()" 
-      height ="30px"
-    >
-    <div class="subTaskAdder">
-      <input 
-        type="text" 
-        name="title" 
-        class="subTaskInput" 
-        placeholder="Tasks..."
-      />
-      <button 
-        onclick="addNewSubTask(${task.id})"
-        class="subTaskButton"
-      >
-      <img src="images/add.svg" height="30px"/>
-      </button>
-    </div>
-  </div>`;
-  return convertHtmlToNode(returnHtml);
 };
 
 const setUpTitleContainer = function(tasks) {
@@ -184,6 +134,7 @@ const generateTodoTasks = function(arrayOfObjects) {
   setUpTitleContainer(arrayOfObjects);
   setUpTaskContainer(arrayOfObjects);
 };
+
 const createTasks = function(task) {
   const taskHtml = `<div 
     class="todoBox" 
