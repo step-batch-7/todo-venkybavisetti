@@ -23,6 +23,7 @@ const addNewSubTask = function(id) {
 };
 
 const removeTask = function(id) {
+  event.stopPropagation();
   postHttpMsg('/removeTask', generateTodoTasks, `id=${id}`);
 };
 
@@ -66,17 +67,4 @@ const particularTask = function(id) {
 
 const loadHomePage = function() {
   getHttpMsg('/loadHomePage', generateTodoTasks);
-};
-
-const searchTask = function() {
-  const searchInput = event.target.value;
-  const allTask = document.querySelectorAll('.allHeaders p');
-  allTask.forEach(task => {
-    const id = task.parentElement.parentElement.id;
-    if (task.innerText.includes(searchInput)) {
-      document.getElementById(id).style.display = '';
-    } else {
-      document.getElementById(id).style.display = 'none';
-    }
-  });
 };

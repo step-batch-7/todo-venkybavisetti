@@ -16,6 +16,11 @@ body {
   text-align: center;
 }
 
+.searchBar {
+  display: flex;
+  justify-content: space-between;
+}
+
 .searchTask {
   height: 2vw;
   width: 25vw;

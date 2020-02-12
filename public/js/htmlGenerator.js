@@ -1,3 +1,16 @@
+const searchTask = function(event) {
+  const searchInput = event.target.value;
+  const allTask = document.querySelectorAll('.allHeaders p');
+  allTask.forEach(task => {
+    const id = task.parentElement.parentElement.id;
+    if (task.innerText.includes(searchInput)) {
+      document.getElementById(id).style.display = '';
+    } else {
+      document.getElementById(id).style.display = 'none';
+    }
+  });
+};
+
 const focusOnTask = function() {
   const edition = document.querySelector('.titleName');
   edition.focus();
@@ -26,11 +39,11 @@ const getStatus = function(subTasks) {
 };
 const createTasks = function(task) {
   const taskHtml = `<div 
-    class="todoBox" 
+    class="todoBox" onclick="particularTask(${task.id})"
    id="${task.id}"
     >
     <div class="allHeaders">
-      <p style="margin:6px"  onclick="particularTask(${task.id})">
+      <p style="margin:6px"  >
       ${task.title}</p>
       <img 
         src="images/delete.svg"

@@ -37,5 +37,6 @@ Pairing:
 --done--* Want to add some space between edit icon and delete icon.
 --done--* give style of h2 tag of class body header in css file
 --done--* Search by task. 
-* Search by subTask.
+* changing ui of displaying task container.
 * delete tags class like p,ul, li and merge with div classes.
+* Search by subTask.

@@ -12,9 +12,15 @@
 
 <body onload="loadHomePage()">
   <div class="bodyHeader">
-    <div class="searchTask" oninput="searchTask()">
-      <input type="search" placeholder="Search your task here...">
-      <img src="/images/search.svg" alt="searchIcon">
+    <div class="searchBar">
+      <div class="searchTask" oninput="searchTask(event)">
+        <input type="search" id="searchValue" placeholder="Search your task here...">
+        <img src="/images/search.svg" alt="searchIcon">
+      </div>
+      <div class="searchTask" oninput="searchSubTask(event)" onclick="getAllTodo()">
+        <input type="search" id="searchSubTask" placeholder="Search your sub task here...">
+        <img src="/images/search.svg" alt="searchIcon">
+      </div>
     </div>
     <h2>To Do List</h2>
     <input type="text" name="title" id="taskInput" placeholder="Title..." />
