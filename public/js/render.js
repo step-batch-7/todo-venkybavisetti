@@ -1,40 +1,40 @@
+const selectAll = document.querySelectorAll.bind(document);
+const getElement = document.getElementById.bind(document);
+
 const searchTask = function(event) {
   const searchInput = event.target.value;
-  const allTask = document.querySelectorAll('.allHeaders p');
+  const allTask = selectAll('.allHeaders p');
   allTask.forEach(task => {
     const id = task.parentElement.parentElement.id;
-    document.getElementById(id).style.display = 'none';
+    getElement(id).style.display = 'none';
     if (task.innerText.includes(searchInput)) {
-      document.getElementById(id).style.display = '';
+      getElement(id).style.display = '';
     }
   });
 };
 
 const matchSubTask = function(subTask, searchInput) {
-  document.getElementById(subTask.id).style['backgroundColor'] = 'white';
+  getElement(subTask.id).style['backgroundColor'] = 'white';
   if (subTask.innerText.toLowerCase().includes(searchInput) && searchInput) {
-    document.getElementById(subTask.id).style['backgroundColor'] =
-      'rgb(120,120,120)';
+    getElement(subTask.id).style['backgroundColor'] = 'rgb(120,120,120)';
   }
 };
 
 const showMatchedSubTask = function(task, searchInput) {
-  const subTaskTitle = Array.from(
-    document.querySelectorAll(`[id="${task.id}"] li`)
-  );
+  const subTaskTitle = Array.from(selectAll(`[id="${task.id}"] li`));
   const matchedSubTask = subTaskTitle.filter(subTask =>
     subTask.innerText.toLowerCase().includes(searchInput)
   );
   subTaskTitle.forEach(subTask => matchSubTask(subTask, searchInput));
-  document.getElementById(task.id).style.display = '';
+  getElement(task.id).style.display = '';
   if (matchedSubTask.length === 0 && searchInput) {
-    document.getElementById(task.id).style.display = 'none';
+    getElement(task.id).style.display = 'none';
   }
 };
 
 const searchSubTask = function() {
   const searchInput = event.target.value.toLowerCase();
-  const allTask = document.querySelectorAll('.todoBox');
+  const allTask = selectAll('.todoBox');
   allTask.forEach(task => showMatchedSubTask(task, searchInput));
 };
 
@@ -133,8 +133,8 @@ const getSubTasksList = function(task) {
 
 const createTitle = function(task) {
   const titleHtml = `<li
-    onclick="particularTask(${task.id})"
     class="titleListDisplay"
+    id="title${task.id}"
   >
     ${task.title}
     <img
@@ -147,14 +147,14 @@ const createTitle = function(task) {
 };
 
 const setUpTitleContainer = function(tasks) {
-  const titleContainer = document.getElementById('titleContainer');
+  const titleContainer = getElement('titleContainer');
   titleContainer.innerHTML = '';
   const titleList = tasks.map(createTitle);
   titleList.forEach(title => titleContainer.appendChild(title));
 };
 
 const setUpTaskContainer = function(tasks) {
-  const taskContainer = document.getElementById('taskContainer');
+  const taskContainer = getElement('taskContainer');
   taskContainer.innerHTML = '';
   const taskList = tasks.map(createTasks);
   taskList.forEach(task => taskContainer.appendChild(task));
@@ -197,14 +197,21 @@ const createStatusBar = function(task) {
   return convertHtmlToNode(statusBar);
 };
 
+const createDeleteButton = function(id) {
+  const deleteButton = document.createElement('img');
+  deleteButton.src = 'images/delete.svg';
+  deleteButton.onclick = () => removeTask(id);
+  return deleteButton;
+};
+
 const createTaskHeader = function(task) {
   const taskHeader = document.createElement('div');
   taskHeader.className = 'allHeaders';
   const title = document.createElement('p');
+  title.contentEditable = true;
+  title.onblur = () => editTask(task.id);
   title.innerText = task.title;
-  const deleteButton = document.createElement('img');
-  deleteButton.src = 'images/delete.svg';
-  deleteButton.onclick = () => removeTask(task.id);
+  const deleteButton = createDeleteButton(task.id);
   taskHeader.appendChild(title);
   taskHeader.appendChild(deleteButton);
   return taskHeader;
@@ -234,4 +241,8 @@ const generateParticularTask = function(taskDetails) {
   statusBar.innerHTML = '';
   statusBar.innerHTML = getStatusHtml(taskDetails);
   container.innerHTML = task;
+};
+
+const editTaskTitle = function(task) {
+  document.getElementById(`title${task.id}`).innerText = task.title;
 };

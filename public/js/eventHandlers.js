@@ -35,10 +35,10 @@ const removeSubTask = function(taskId, subTaskId) {
 };
 
 const editTask = function(taskId) {
-  const newTaskName = event.target.value;
+  const newTaskName = event.target.innerText;
   postHttpMsg(
     '/editTask',
-    generateParticularTask,
+    editTaskTitle,
     `taskId=${taskId}&title=${newTaskName}`
   );
 };
