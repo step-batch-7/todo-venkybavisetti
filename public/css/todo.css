@@ -121,8 +121,17 @@
 
 .subTaskImages {
   display: flex;
-  width: 50px;
+  width: 45px;
   justify-content: space-between;
+}
+
+.deleteIcon {
+  height: 22px;
+}
+
+.editIcon {
+  margin-top: 2px;
+  height: 18px;
 }
 
 .unCheckedClass,

@@ -14,17 +14,10 @@ const subTaskTitle = function(task, subTask) {
 
 const subTaskOption = function(task, subTask) {
   return `<div class = "subTaskImages">
-  <span style='margin-top:2px'>
-    <img 
-      src="images/edit.svg"
-      height ="18px" 
-      onclick="focusOnSubTask()"
-    />
-  </span>
+  <img class="editIcon" src="images/edit.svg" onclick="focusOnSubTask()"/>
   <img 
-    src="images/cancel.svg"
-    onclick="removeSubTask(${task.id},${subTask.id})" height ="22px"
-  />
+    src="images/cancel.svg" class="deleteIcon"
+    onclick="removeSubTask(${task.id},${subTask.id})"   />
   </div>`;
 };
 
