@@ -16,18 +16,18 @@
 <body onload="loadHomePage()">
   <div class="bodyHeader">
     <div class="searchBar">
-      <div class="searchTask" oninput="searchTask(event)">
+      <div class="search" oninput="searchTodo(event)">
         <input type="search" id="searchValue" placeholder="Search your Todo here...">
         <img src="/images/search.svg" alt="searchIcon">
       </div>
-      <div class="searchTask" oninput="searchSubTask(event)">
+      <div class="search" oninput="searchTask(event)">
         <input type="search" id="searchSubTask" placeholder="Search your Task here...">
         <img src="/images/search.svg" alt="searchIcon">
       </div>
     </div>
     <h2>To Do List</h2>
-    <input type="text" name="title" id="taskInput" placeholder="Title..." />
-    <button id="addTitle" onclick="addNewTask()">Add</button>
+    <input type="text" name="title" id="todoInput" placeholder="Title..." />
+    <button id="addTitle" onclick="addTodo()">Add</button>
   </div>
   <div id="container">
     <div id="smartContainer">
@@ -35,7 +35,7 @@
         <span class="animationOfText"> My Todo Work</span>
       </div>
       <div id="onlyTitles">
-        <p id="titleHeaderOfContainer">All Tasks You Have</p>
+        <p id="titleHeaderOfContainer">All Lists You Have</p>
         <ul id="titleContainer"></ul>
       </div>
     </div>

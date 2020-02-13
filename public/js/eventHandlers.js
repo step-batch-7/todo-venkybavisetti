@@ -1,62 +1,61 @@
-const addNewTask = function() {
-  const newTaskInput = document.querySelector('#taskInput');
-  const newTask = newTaskInput.value;
-  newTaskInput.value = '';
-  if (newTask === '') {
+const addTodo = function() {
+  const todo = document.querySelector('#todoInput');
+  const todoTitle = todo.value;
+  todo.value = '';
+  if (todoTitle === '') {
     return;
   }
-  postHttpMsg('/addTask', generateTodoTasks, `title=${newTask}`);
+  postHttpMsg('/addTodo', generateTodoTasks, `title=${todoTitle}`);
 };
 
-const addNewSubTask = function(id) {
-  const newSubTask = event.target.parentElement.previousSibling.previousSibling;
-  if (newSubTask.value === '') {
+const addTask = function(id) {
+  const task = event.target.parentElement.previousSibling.previousSibling;
+  if (task.value === '') {
     return;
   }
   postHttpMsg(
-    '/addSubTask',
-    generateParticularTask,
-    `subTask=${newSubTask.value}&id=${id}`
+    '/addTask',
+    generateParticularTodo,
+    `task=${task.value}&id=${id}`
   );
-  newSubTask.value = '';
+  task.value = '';
 };
 
-const removeTask = function(id) {
-  event.stopPropagation();
-  postHttpMsg('/removeTask', generateTodoTasks, `id=${id}`);
+const removeTodo = function(id) {
+  postHttpMsg('/removeTodo', generateTodoTasks, `id=${id}`);
 };
 
-const removeSubTask = function(taskId, subTaskId) {
+const removeTask = function(todoId, taskId) {
   postHttpMsg(
-    '/removeSubTask',
-    generateParticularTask,
-    `taskId=${taskId}&subTaskId=${subTaskId}`
+    '/removeTask',
+    generateParticularTodo,
+    `todoId=${todoId}&taskId=${taskId}`
   );
 };
 
-const editTask = function(taskId) {
+const editTodo = function(todoId) {
+  const newTodoTitle = event.target.innerText;
+  postHttpMsg(
+    '/editTodo',
+    editTaskTitle,
+    `todoId=${todoId}&title=${newTodoTitle}`
+  );
+};
+
+const editTask = function(todoId, taskId) {
   const newTaskName = event.target.innerText;
   postHttpMsg(
     '/editTask',
-    editTaskTitle,
-    `taskId=${taskId}&title=${newTaskName}`
+    generateParticularTodo,
+    `todoId=${todoId}&taskId=${taskId}&subTitle=${newTaskName}`
   );
 };
 
-const editSubTask = function(taskId, subTaskId) {
-  const newSubTaskName = event.target.innerText;
-  postHttpMsg(
-    '/editSubTask',
-    generateParticularTask,
-    `taskId=${taskId}&subTaskId=${subTaskId}&subTitle=${newSubTaskName}`
-  );
-};
-
-const toggleDone = function(taskId, subTaskId) {
+const toggleDone = function(todoId, taskId) {
   postHttpMsg(
     '/toggleDone',
-    generateParticularTask,
-    `taskId=${taskId}&subTaskId=${subTaskId}`
+    generateParticularTodo,
+    `todoId=${todoId}&taskId=${taskId}`
   );
 };
 

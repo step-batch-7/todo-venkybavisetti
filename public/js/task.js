@@ -1,6 +1,6 @@
-const createStatusBar = function(task) {
+const createStatusBar = function(todo) {
   const statusBar = `<div class="statusBar">
-  ${getStatusHtml(task)}
+  ${getStatusHtml(todo)}
   </div>`;
   return convertHtmlToNode(statusBar);
 };
@@ -8,49 +8,49 @@ const createStatusBar = function(task) {
 const createDeleteButton = function(id) {
   const deleteButton = document.createElement('img');
   deleteButton.src = 'images/delete.svg';
-  deleteButton.onclick = () => removeTask(id);
+  deleteButton.onclick = () => removeTodo(id);
   return deleteButton;
 };
 
-const createTaskHeader = function(task) {
-  const taskHeader = document.createElement('div');
-  taskHeader.className = 'allHeaders';
+const createTodoHeader = function(todo) {
+  const todoHeader = document.createElement('div');
+  todoHeader.className = 'allHeaders';
   const title = document.createElement('p');
   title.contentEditable = true;
-  title.onblur = () => editTask(task.id);
-  title.innerText = task.title;
-  const deleteButton = createDeleteButton(task.id);
-  taskHeader.appendChild(title);
-  taskHeader.appendChild(deleteButton);
-  return taskHeader;
+  title.onblur = () => editTodo(todo.id);
+  title.innerText = todo.title;
+  const deleteButton = createDeleteButton(todo.id);
+  todoHeader.appendChild(title);
+  todoHeader.appendChild(deleteButton);
+  return todoHeader;
 };
 
-const createTasks = function(task) {
-  const taskHeader = createTaskHeader(task);
-  const statusBar = createStatusBar(task);
-  const subTaskList = createSubTask(task);
-  const subTaskAdder = addSubTask(task);
+const createTodoList = function(todo) {
+  const todoHeader = createTodoHeader(todo);
+  const statusBar = createStatusBar(todo);
+  const taskList = createTask(todo);
+  const taskAdder = addNewTask(todo);
   const todoBox = document.createElement('div');
   todoBox.className = 'todoBox';
-  todoBox.id = task.id;
-  const child = [taskHeader, statusBar, subTaskList, subTaskAdder];
+  todoBox.id = todo.id;
+  const child = [todoHeader, statusBar, taskList, taskAdder];
   child.forEach(child => todoBox.appendChild(child));
   return todoBox;
 };
 
-const generateParticularTask = function(taskDetails) {
-  const task = getSubTasksList(taskDetails);
+const generateParticularTodo = function(todoDetails) {
+  const todo = getTasksList(todoDetails);
   const container = document.querySelector(
-    `[id="${taskDetails.id}"] .subTaskList`
+    `[id="${todoDetails.id}"] .taskList`
   );
   const statusBar = document.querySelector(
-    `[id="${taskDetails.id}"] .statusBar`
+    `[id="${todoDetails.id}"] .statusBar`
   );
   statusBar.innerHTML = '';
-  statusBar.innerHTML = getStatusHtml(taskDetails);
-  container.innerHTML = task;
+  statusBar.innerHTML = getStatusHtml(todoDetails);
+  container.innerHTML = todo;
 };
 
-const editTaskTitle = function(task) {
-  document.getElementById(`title${task.id}`).innerText = task.title;
+const editTodoTitle = function(todo) {
+  document.getElementById(`title${todo.id}`).innerText = todo.title;
 };

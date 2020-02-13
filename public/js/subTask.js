@@ -1,23 +1,23 @@
-const focusOnSubTask = function() {
-  document.querySelector('.subTaskText').focus();
+const focusOnTask = function(todoId, taskId) {
+  document.querySelector(`[id="${todoId}_${taskId}"] .taskText`).focus();
 };
 
-const subTaskTitle = function(task, subTask) {
+const taskTitle = function(todo, task) {
   return `<span 
-  contenteditable class="subTaskText"
+  contenteditable class="taskText"
   spellcheck = "false"
-  onfocusout="editSubTask(${task.id},${subTask.id})"
+  onfocusout="editTask(${todo.id},${task.id})"
 >
-  ${subTask.text}
+  ${task.title}
 </span>`;
 };
 
-const subTaskOption = function(task, subTask) {
-  return `<div class = "subTaskImages">
-  <img class="editIcon" src="images/edit.svg" onclick="focusOnSubTask()"/>
+const taskOption = function(todo, task) {
+  return `<div class = "taskImages">
+  <img class="editIcon" src="images/edit.svg" onclick="focusOnTask(${todo.id},${task.id})"/>
   <img 
     src="images/cancel.svg" class="deleteIcon"
-    onclick="removeSubTask(${task.id},${subTask.id})"   />
+    onclick="removeTask(${todo.id},${task.id})"   />
   </div>`;
 };
 
@@ -25,52 +25,51 @@ const isDone = function(boolean) {
   return boolean ? 'class="checkedClass"' : 'class="unCheckedClass"';
 };
 
-const getSubTasksList = function(task) {
-  const subTaskHtml = function(subTaskList, subTask) {
-    const subTaskHtml = `<li 
-      ${isDone(subTask.done)} 
-      id="${task.id}_${subTask.id}"
+const getTasksList = function(todo) {
+  const taskHtml = function(taskList, task) {
+    const taskHtml = `<li 
+      ${isDone(task.done)} 
+      id="${todo.id}_${task.id}"
     >
       <div >
         <input 
           type="checkbox" 
-          ${subTask.done ? 'checked' : ''}
-          onclick="toggleDone(${task.id},${subTask.id})"
+          ${task.done ? 'checked' : ''}
+          onclick="toggleDone(${todo.id},${task.id})"
         >
-        ${subTaskTitle(task, subTask)}
+        ${taskTitle(todo, task)}
       </div>
-      ${subTaskOption(task, subTask)}
+      ${taskOption(todo, task)}
     </li>`;
-    subTask.done
-      ? subTaskList.push(subTaskHtml)
-      : subTaskList.unshift(subTaskHtml);
-    return subTaskList;
+    task.done ? taskList.push(taskHtml) : taskList.unshift(taskHtml);
+    return taskList;
   };
-  return task.tasks.reduce(subTaskHtml, []).join('');
+  console.log(todo);
+  return todo.tasks.reduce(taskHtml, []).join('');
 };
 
-const createSubTask = function(task) {
-  const subTaskHtml = `<div class="subTaskList">
-  ${getSubTasksList(task)}
+const createTask = function(todo) {
+  const taskHtml = `<div class="taskList">
+  ${getTasksList(todo)}
   </div>`;
-  return convertHtmlToNode(subTaskHtml);
+  return convertHtmlToNode(taskHtml);
 };
 
 const addButton = function(taskId) {
-  return `<button onclick="addNewSubTask(${taskId})" class="subTaskButton">
+  return `<button onclick="addTask(${taskId})" class="taskButton">
     <img src="images/add.svg" height="30px" />
   </button>`;
 };
 
-const addSubTask = function(task) {
-  const subTaskAdderHtml = `<div class="subTaskAdder">
+const addNewTask = function(task) {
+  const taskAdderHtml = `<div class="taskAdder">
   <input 
     type="text" 
     name="title" 
-    class="subTaskInput" 
+    class="taskInput" 
     placeholder="Tasks..."
   />
   ${addButton(task.id)}
 </div>`;
-  return convertHtmlToNode(subTaskAdderHtml);
+  return convertHtmlToNode(taskAdderHtml);
 };

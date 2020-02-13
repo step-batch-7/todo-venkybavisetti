@@ -100,30 +100,25 @@
   height: 30px;
 }
 
-.returnBar {
-  display: flex;
-  justify-content: space-between;
-  margin: 2px;
-}
-
+/* 
 .particularOptions {
   margin-top: 19px;
-}
+} */
 
-.subTaskAdder {
+.taskAdder {
   display: flex;
   justify-content: center;
 }
 
-.subTaskAdder > input {
+.taskAdder > input {
   font-size: 1vw;
 }
 
-.subTaskButton {
+.taskButton {
   background-color: gray;
   border-radius: 5px;
 }
-.subTaskInput {
+.taskInput {
   padding: 10px;
   width: 95%;
   border: 0px;
@@ -132,7 +127,7 @@
   background-color: rgb(250, 253, 253);
 }
 
-.particularTask {
+/* .particularTask {
   background-color: rgb(211, 211, 211);
   margin: 5px;
   border-radius: 5px;
@@ -148,9 +143,9 @@
   text-align: center;
   display: flex;
   justify-content: space-between;
-}
+} */
 
-.subTaskImages {
+.taskImages {
   display: flex;
   width: 45px;
   justify-content: space-between;
@@ -182,7 +177,7 @@
   font-style: italic;
 }
 
-.subTaskList {
+.taskList {
   height: 19.5vw;
   margin-bottom: 1vw;
   overflow: scroll;

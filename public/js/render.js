@@ -7,67 +7,67 @@ const convertHtmlToNode = function(html) {
   return temp.firstChild;
 };
 
-const getStatus = function(subTasks) {
-  const doneTasks = subTasks.reduce((doneNum, task) => {
+const getStatus = function(tasks) {
+  const doneTasks = tasks.reduce((doneNum, task) => {
     return task.done ? ++doneNum : doneNum;
   }, 0);
   return {
-    totalTasks: subTasks.length,
+    totalTasks: tasks.length,
     doneTasks,
-    notDoneTasks: subTasks.length - doneTasks
+    notDoneTasks: tasks.length - doneTasks
   };
 };
 
-const getStatusHtml = function(task) {
-  const taskStatus = getStatus(task.tasks);
-  const html = `<span class="totalTasks">
-      Total Tasks :- ${taskStatus.totalTasks}
+const getStatusHtml = function(todo) {
+  const todoStatus = getStatus(todo.tasks);
+  const statusHtml = `<span class="totalTasks">
+      Total Tasks :- ${todoStatus.totalTasks}
     </span>
     <span class="tasksDone">
-      <p >${taskStatus.doneTasks}</p>
+      <p >${todoStatus.doneTasks}</p>
       <img 
         src="images/done.svg" 
       
       >
     </span>
     <span class="tasksNotDone">
-      <p >${taskStatus.notDoneTasks}</p>
+      <p >${todoStatus.notDoneTasks}</p>
       <img 
         src="images/wrong.svg">
     </span>`;
-  return html;
+  return statusHtml;
 };
 
-const createTitle = function(task) {
+const createTodoTitle = function(todo) {
   const titleHtml = `<li
     class="titleListDisplay"
-    id="title${task.id}"
+    id="title${todo.id}"
   >
-    ${task.title}
+    ${todo.title}
     <img
       src="images/delete.svg"
-      onclick = 'removeTask(${task.id})'
+      onclick = 'removeTask(${todo.id})'
       height ="17px"
     />
   </li>`;
   return convertHtmlToNode(titleHtml);
 };
 
-const setUpTitleContainer = function(tasks) {
+const setUpTitleContainer = function(todoList) {
   const titleContainer = getElement('titleContainer');
   titleContainer.innerHTML = '';
-  const titleList = tasks.map(createTitle);
+  const titleList = todoList.map(createTodoTitle);
   titleList.forEach(title => titleContainer.appendChild(title));
 };
 
-const setUpTaskContainer = function(tasks) {
+const setUpTaskContainer = function(todoList) {
   const taskContainer = getElement('taskContainer');
   taskContainer.innerHTML = '';
-  const taskList = tasks.map(createTasks);
-  taskList.forEach(task => taskContainer.appendChild(task));
+  const allTodo = todoList.map(createTodoList);
+  allTodo.forEach(todo => taskContainer.appendChild(todo));
 };
 
-const generateTodoTasks = function(arrayOfObjects) {
-  setUpTitleContainer(arrayOfObjects);
-  setUpTaskContainer(arrayOfObjects);
+const generateTodoTasks = function(todoList) {
+  setUpTitleContainer(todoList);
+  setUpTaskContainer(todoList);
 };
