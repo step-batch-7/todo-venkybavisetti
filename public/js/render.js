@@ -18,32 +18,22 @@ const getStatus = function(subTasks) {
   };
 };
 
-const isChecked = function(boolean) {
-  return boolean ? 'checked' : '';
-};
-
-const getClass = function(boolean) {
-  return boolean ? 'class="checkedClass"' : 'class="unCheckedClass"';
-};
-
 const getStatusHtml = function(task) {
   const taskStatus = getStatus(task.tasks);
   const html = `<span class="totalTasks">
       Total Tasks :- ${taskStatus.totalTasks}
     </span>
     <span class="tasksDone">
-      <p style="margin:1px">${taskStatus.doneTasks}</p>
+      <p >${taskStatus.doneTasks}</p>
       <img 
         src="images/done.svg" 
-        height="20"
+      
       >
     </span>
     <span class="tasksNotDone">
-      <p style="margin:0px">${taskStatus.notDoneTasks}</p>
+      <p >${taskStatus.notDoneTasks}</p>
       <img 
-        src="images/wrong.svg"
-        height="17px"
-      >
+        src="images/wrong.svg">
     </span>`;
   return html;
 };

@@ -21,16 +21,20 @@ const subTaskOption = function(task, subTask) {
   </div>`;
 };
 
+const isDone = function(boolean) {
+  return boolean ? 'class="checkedClass"' : 'class="unCheckedClass"';
+};
+
 const getSubTasksList = function(task) {
   const subTaskHtml = function(subTaskList, subTask) {
     const subTaskHtml = `<li 
-      ${getClass(subTask.done)} 
+      ${isDone(subTask.done)} 
       id="${task.id}_${subTask.id}"
     >
       <div >
         <input 
           type="checkbox" 
-          ${isChecked(subTask.done)} 
+          ${subTask.done ? 'checked' : ''}
           onclick="toggleDone(${task.id},${subTask.id})"
         >
         ${subTaskTitle(task, subTask)}

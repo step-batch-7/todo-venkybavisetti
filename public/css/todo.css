@@ -53,11 +53,29 @@
   display: flex;
   justify-content: space-between;
 }
+
+.tasksDone > img {
+  height: 20px;
+}
+
+.tasksDone > p {
+  margin: 1px;
+}
+
 .tasksNotDone {
   background-color: lightsalmon;
   display: flex;
   justify-content: space-between;
 }
+
+.tasksNotDone > img {
+  height: 17px;
+}
+
+.tasksNotDone > p {
+  margin: 0px;
+}
+
 .allHeaders {
   font-size: 25px;
   display: flex;
@@ -88,6 +106,11 @@
   display: flex;
   justify-content: center;
 }
+
+.subTaskAdder > input {
+  font-size: 1vw;
+}
+
 .subTaskButton {
   background-color: gray;
   border-radius: 5px;
