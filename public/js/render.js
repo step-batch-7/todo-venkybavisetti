@@ -3,12 +3,39 @@ const searchTask = function(event) {
   const allTask = document.querySelectorAll('.allHeaders p');
   allTask.forEach(task => {
     const id = task.parentElement.parentElement.id;
+    document.getElementById(id).style.display = 'none';
     if (task.innerText.includes(searchInput)) {
       document.getElementById(id).style.display = '';
-    } else {
-      document.getElementById(id).style.display = 'none';
     }
   });
+};
+
+const matchSubTask = function(subTask, searchInput) {
+  document.getElementById(subTask.id).style['backgroundColor'] = 'white';
+  if (subTask.innerText.toLowerCase().includes(searchInput) && searchInput) {
+    document.getElementById(subTask.id).style['backgroundColor'] =
+      'rgb(120,120,120)';
+  }
+};
+
+const showMatchedSubTask = function(task, searchInput) {
+  const subTaskTitle = Array.from(
+    document.querySelectorAll(`[id="${task.id}"] li`)
+  );
+  const matchedSubTask = subTaskTitle.filter(subTask =>
+    subTask.innerText.toLowerCase().includes(searchInput)
+  );
+  subTaskTitle.forEach(subTask => matchSubTask(subTask, searchInput));
+  document.getElementById(task.id).style.display = '';
+  if (matchedSubTask.length === 0 && searchInput) {
+    document.getElementById(task.id).style.display = 'none';
+  }
+};
+
+const searchSubTask = function() {
+  const searchInput = event.target.value.toLowerCase();
+  const allTask = document.querySelectorAll('.todoBox');
+  allTask.forEach(task => showMatchedSubTask(task, searchInput));
 };
 
 const focusOnTask = function() {
@@ -70,7 +97,10 @@ const getStatusHtml = function(task) {
 
 const getSubTasksList = function(task) {
   const subTaskHtml = function(subTaskList, subTask) {
-    const subTaskHtml = `<li ${getClass(subTask.done)} >
+    const subTaskHtml = `<li 
+      ${getClass(subTask.done)} 
+      id="${task.id}_${subTask.id}"
+    >
       <div >
         <input 
           type="checkbox" 
@@ -187,6 +217,7 @@ const createTasks = function(task) {
   const subTaskAdder = addSubTask(task);
   const todoBox = document.createElement('div');
   todoBox.className = 'todoBox';
+  todoBox.id = task.id;
   const child = [taskHeader, statusBar, subTaskList, subTaskAdder];
   child.forEach(child => todoBox.appendChild(child));
   return todoBox;

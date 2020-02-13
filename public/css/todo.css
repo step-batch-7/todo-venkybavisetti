@@ -138,9 +138,7 @@
 }
 
 .checkedClass {
-  background-color: dimgray;
   font-weight: 100;
-  color: rgb(194, 185, 185);
   font-style: italic;
 }
 
