@@ -2,6 +2,32 @@ const focusOnSubTask = function() {
   document.querySelector('.subTaskText').focus();
 };
 
+const subTaskTitle = function(task, subTask) {
+  return `<span 
+  contenteditable class="subTaskText"
+  spellcheck = "false"
+  onfocusout="editSubTask(${task.id},${subTask.id})"
+>
+  ${subTask.text}
+</span>`;
+};
+
+const subTaskOption = function(task, subTask) {
+  return `<div class = "subTaskImages">
+  <span style='margin-top:2px'>
+    <img 
+      src="images/edit.svg"
+      height ="18px" 
+      onclick="focusOnSubTask()"
+    />
+  </span>
+  <img 
+    src="images/cancel.svg"
+    onclick="removeSubTask(${task.id},${subTask.id})" height ="22px"
+  />
+  </div>`;
+};
+
 const getSubTasksList = function(task) {
   const subTaskHtml = function(subTaskList, subTask) {
     const subTaskHtml = `<li 
@@ -14,21 +40,9 @@ const getSubTasksList = function(task) {
           ${isChecked(subTask.done)} 
           onclick="toggleDone(${task.id},${subTask.id})"
         >
-        <span 
-          contenteditable class="subTaskText"
-          spellcheck = "false"
-          onfocusout="editSubTask(${task.id},${subTask.id})"
-        >
-          ${subTask.text}
-        </span>
+        ${subTaskTitle(task, subTask)}
       </div>
-      <div class = "subTaskImages">
-      <span style='margin-top:2px'><img src="images/edit.svg" height ="18px" onclick="focusOnSubTask()"/></span>
-      <img 
-        src="images/cancel.svg"
-        onclick="removeSubTask(${task.id},${subTask.id})" height ="22px"
-      />
-      </div>
+      ${subTaskOption(task, subTask)}
     </li>`;
     subTask.done
       ? subTaskList.push(subTaskHtml)
@@ -45,7 +59,7 @@ const createSubTask = function(task) {
   return convertHtmlToNode(subTaskHtml);
 };
 
-const addIcon = function(taskId) {
+const addButton = function(taskId) {
   return `<button onclick="addNewSubTask(${taskId})" class="subTaskButton">
     <img src="images/add.svg" height="30px" />
   </button>`;
@@ -59,7 +73,7 @@ const addSubTask = function(task) {
     class="subTaskInput" 
     placeholder="Tasks..."
   />
-  ${addIcon(task.id)}
+  ${addButton(task.id)}
 </div>`;
   return convertHtmlToNode(subTaskAdderHtml);
 };
