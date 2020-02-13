@@ -38,11 +38,6 @@ const searchSubTask = function() {
   allTask.forEach(task => showMatchedSubTask(task, searchInput));
 };
 
-const focusOnTask = function() {
-  const edition = document.querySelector('.titleName');
-  edition.focus();
-};
-
 const focusOnSubTask = function() {
   const edition = document.querySelector('.subTaskText');
   edition.focus();
