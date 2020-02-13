@@ -128,6 +128,10 @@ body {
 }
 
 .titleListDisplay {
+  white-space: nowrap;
+  margin: 6px;
+  outline: none;
+  overflow-x: scroll;
   border-radius: 5px;
   display: flex;
   font-size: medium;

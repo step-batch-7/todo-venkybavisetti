@@ -84,8 +84,16 @@
   border-radius: 5px;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 .allHeaders > p {
+  white-space: nowrap;
   margin: 6px;
+  outline: none;
+  overflow-x: scroll;
+  flex: 90%;
 }
 
 .allHeaders > img {
