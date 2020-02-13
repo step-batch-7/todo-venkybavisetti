@@ -45,6 +45,12 @@ const createSubTask = function(task) {
   return convertHtmlToNode(subTaskHtml);
 };
 
+const addIcon = function(taskId) {
+  return `<button onclick="addNewSubTask(${taskId})" class="subTaskButton">
+    <img src="images/add.svg" height="30px" />
+  </button>`;
+};
+
 const addSubTask = function(task) {
   const subTaskAdderHtml = `<div class="subTaskAdder">
   <input 
@@ -53,12 +59,7 @@ const addSubTask = function(task) {
     class="subTaskInput" 
     placeholder="Tasks..."
   />
-  <button 
-    onclick="addNewSubTask(${task.id})"
-    class="subTaskButton"
-  >
-  <img src="images/add.svg" height="30px"/>
-  </button>
+  ${addIcon(task.id)}
 </div>`;
   return convertHtmlToNode(subTaskAdderHtml);
 };
