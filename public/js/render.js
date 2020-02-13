@@ -39,8 +39,7 @@ const searchSubTask = function() {
 };
 
 const focusOnSubTask = function() {
-  const edition = document.querySelector('.subTaskText');
-  edition.focus();
+  document.querySelector('.subTaskText').focus();
 };
 
 const convertHtmlToNode = function(html) {
