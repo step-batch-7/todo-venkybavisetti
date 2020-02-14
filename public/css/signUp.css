@@ -1,11 +1,9 @@
-.logInPage {
-  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
-  width: 100vw;
-  height: 100vh;
-  background-size: cover;
+body {
+  font-family: sans-serif;
+  height: 100%;
+  width: 100%;
 }
-
-.login {
+.signUpBox {
   position: absolute;
   background-color: white;
   margin: auto;
@@ -14,36 +12,31 @@
   bottom: 0;
   left: 0;
   width: 25vw;
-  height: 30vw;
+  height: 40vw;
   border: 0.1vw solid;
   font-size: 1.5vw;
   font-weight: 100;
   border-radius: 0.8vw;
 }
 
-.header {
-  margin: 1vw;
-}
-
-.userName {
-  margin: 1vw;
-}
-
-.userName * p {
+label,
+p {
   margin-left: 0.5vw;
-  margin-top: 1.5vw;
-  margin-bottom: 0;
 }
 
-.userName * input {
+.signUpBox input {
   width: 90%;
-  margin: 0.5vw;
-  outline: none;
-  font-size: 2vw;
-  font-weight: 100;
+  margin-left: 0.7vw;
+  margin-top: 1.5vw;
+  margin-bottom: 0.7vw;
+  cursor: pointer;
+  height: 2vw;
+  font-size: 1.5vw;
+  border-radius: 0.5vw;
+  color: black;
 }
 
-.userName * button {
+.signUpBox button {
   width: 90%;
   margin-left: 0.7vw;
   margin-top: 1.5vw;
@@ -56,27 +49,21 @@
   color: black;
 }
 
-.userName > a {
-  text-decoration: none;
-  margin-left: 9vw;
+.signUpPage {
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
 }
 
-.userName button:hover {
-  transform: scale(1.05);
-}
-
-.userName a:hover {
-  text-decoration: underline;
-}
-
-.signUp {
+.logIn {
   margin-top: 2vw;
 }
-.signUp:hover {
+.logIn:hover {
   transform: scale(1.1);
 }
 
-.signUp > a {
+.logIn > a {
   cursor: pointer;
   border: none;
   outline: none;
@@ -84,5 +71,5 @@
   margin-top: 1.5vw;
   text-decoration: none;
   color: black;
-  margin-left: 7vw;
+  margin-left: 4vw;
 }
