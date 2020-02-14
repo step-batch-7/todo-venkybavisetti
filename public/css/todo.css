@@ -100,11 +100,6 @@
   height: 30px;
 }
 
-/* 
-.particularOptions {
-  margin-top: 19px;
-} */
-
 .taskAdder {
   display: flex;
   justify-content: center;
@@ -126,24 +121,6 @@
   border-radius: 5px;
   background-color: rgb(250, 253, 253);
 }
-
-/* .particularTask {
-  background-color: rgb(211, 211, 211);
-  margin: 5px;
-  border-radius: 5px;
-  cursor: pointer;
-  height: 92%;
-  overflow: scroll;
-}
-
-.particularTaskHeader {
-  padding: 4px;
-  border-bottom: 1px solid black;
-  border-radius: 5px;
-  text-align: center;
-  display: flex;
-  justify-content: space-between;
-} */
 
 .taskImages {
   display: flex;

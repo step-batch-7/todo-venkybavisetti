@@ -14,7 +14,11 @@ const taskTitle = function(todo, task) {
 
 const taskOption = function(todo, task) {
   return `<div class = "taskImages">
-  <img class="editIcon" src="images/edit.svg" onclick="focusOnTask(${todo.id},${task.id})"/>
+  <img 
+    class="editIcon" 
+    src="images/edit.svg" 
+    onclick="focusOnTask(${todo.id},${task.id})"
+  />
   <img 
     src="images/cancel.svg" class="deleteIcon"
     onclick="removeTask(${todo.id},${task.id})"   />

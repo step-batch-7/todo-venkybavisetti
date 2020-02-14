@@ -1,7 +1,6 @@
 const fs = require('fs');
-const http = require('http');
-const { app } = require('./lib/handlers');
 const defaultPort = 4000;
+const { app } = require('./lib/route');
 
 const setUpDataBase = function() {
   const data = `${__dirname}/data`;
@@ -10,10 +9,11 @@ const setUpDataBase = function() {
   }
 };
 
-const main = (port = defaultPort) => {
+const main = function() {
   setUpDataBase();
-  const server = new http.Server(app.serve.bind(app));
-  server.listen(port, () => console.log(`listening to ${port} `));
+  app.listen(defaultPort, () =>
+    console.log(`Server is listening on ${defaultPort}`)
+  );
 };
-const [, , port] = process.argv;
-main(port);
+
+main();
