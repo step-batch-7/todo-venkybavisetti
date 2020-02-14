@@ -1,137 +1,121 @@
 'use strict';
 const request = require('supertest');
 const sinon = require('sinon');
-const { app } = require('../lib/handlers');
-const App = app.serve.bind(app);
+const { app } = require('../lib/route');
 const fs = require('fs');
 
 describe('FILE NOT FOUND', () => {
   it('Should give file not found if file not exist', done => {
-    request(App)
+    request(app)
       .get('/badFile')
       .set('Accept', '*/*')
       .expect(404)
-      .expect('Content-Type', 'text/plain')
-      .expect('Content-Length', '9')
-      .expect('Not Found', done);
+      .expect('Content-Type', /html/)
+      .expect('Content-Length', '146')
+      .expect(/badFile/, done);
   });
 });
 
 describe('METHOD NOT ALLOWED', () => {
   it('Should should give method not allowed for put method ', done => {
-    request(App)
+    request(app)
       .put('/')
       .set('Accept', '*/*')
       .expect(400)
-      .expect('Content-Type', 'text/plain')
-      .expect('Content-Length', '18')
-      .expect('Method Not Allowed', done);
+      .expect('Content-Type', /html/)
+      .expect('Content-Length', '16')
+      .expect(/MethodNotAllowed/, done);
   });
 });
 
 describe('GET', () => {
   it('should get the home page / path', done => {
-    request(App)
+    request(app)
       .get('/')
       .set('Accept', '*/*')
       .expect(200)
-      .expect('Content-Type', 'text/html', done);
+      .expect('Content-Type', /html/, done);
   });
   it('should get the path /css/homeStyles.css', done => {
-    request(App)
-      .get('/css/homeStyle.css')
+    request(app)
+      .get('/css/homePage.css')
       .set('Accept', '*/*')
       .expect(200)
-      .expect('Content-Type', 'text/css', done);
+      .expect('Content-Type', /css/, done);
   });
   it('should get the path /css/animations.css', done => {
-    request(App)
+    request(app)
       .get('/css/animations.css')
       .set('Accept', '*/*')
       .expect(200)
-      .expect('Content-Type', 'text/css', done);
+      .expect('Content-Type', /css/, done);
   });
   it('should get loadHomePage', done => {
-    request(App)
+    request(app)
       .get('/loadHomePage')
       .set('Accept', '*/*')
       .expect(200)
-      .expect('Content-Type', 'application/json', done);
+      .expect('Content-Type', /application\/json/, done);
   });
 });
 
 describe('POST', () => {
-  beforeEach(() => {
+  before(() => {
     sinon.replace(fs, 'writeFileSync', () => {});
   });
 
-  afterEach(() => {
+  after(() => {
     sinon.restore();
   });
 
   it('should post the title to add', done => {
-    request(App)
-      .post('/addTask')
+    request(app)
+      .post('/addTodo')
       .send('title=newTodo')
       .expect(200)
-      .expect('Content-Type', 'application/json', done);
+      .expect('Content-Type', /application\/json/, done);
   });
   it('should post the id to delete', done => {
-    request(App)
-      .post('/removeTask')
-      .send('id=1')
+    request(app)
+      .post('/removeTodo')
+      .send('id=2')
       .expect(200)
-      .expect('Content-Type', 'application/json', done);
+      .expect('Content-Type', /application\/json/, done);
   });
   it('should post the todo id and task to add new task to a todo', done => {
-    sinon.replace(fs, 'readFileSync', () => {
-      return '[{"title": "venkatesh","id": 1,"tasks": [{ "text": "tiger", "done": true, "id": 1 }]}]';
-    });
-    request(App)
-      .post('/addSubTask')
-      .send('subTask=1&id=1')
+    request(app)
+      .post('/addTask')
+      .send('id=1&task=hii')
       .expect(200)
-      .expect('Content-Type', 'application/json', done);
+      .expect('Content-Type', /application\/json/, done);
+  });
+  it('should post todo id and task id to change a task status', done => {
+    request(app)
+      .post('/toggleDone')
+      .send('todoId=1&taskId=1')
+      .expect(200)
+      .expect('Content-Type', /application\/json/, done);
   });
   it('should post todo id and task id to delete a task from a todo', done => {
-    sinon.replace(fs, 'readFileSync', () => {
-      return '[{"title": "venkatesh","id": 1,"tasks": [{ "text": "tiger", "done": true, "id": 1 }]}]';
-    });
-    request(App)
-      .post('/removeSubTask')
-      .send('taskId=1&subTaskId=1')
+    request(app)
+      .post('/removeTask')
+      .send('todoId=1&taskId=2')
       .expect(200)
-      .expect('Content-Type', 'application/json', done);
+      .expect('Content-Type', /application\/json/, done);
   });
 
   it('should post todo id and task id to change a task status', done => {
-    sinon.replace(fs, 'readFileSync', () => {
-      return '[{"title": "venkatesh","id": 1,"tasks": [{ "text": "tiger", "done": true, "id": 1 }]}]';
-    });
-    request(App)
-      .post('/toggleDone')
-      .send('taskId=1&subTaskId=1')
+    request(app)
+      .post('/editTodo')
+      .send('todoId=1')
       .expect(200)
-      .expect('Content-Type', 'application/json', done);
+      .expect('Content-Type', /application\/json/, done);
   });
   it('should post todo id and task id to change a task status', done => {
-    sinon.replace(fs, 'readFileSync', () => {
-      return '[{"title": "venkatesh","id": 1,"tasks": [{ "text": "tiger", "done": true, "id": 1 }]}]';
-    });
-    request(App)
+    request(app)
       .post('/editTask')
-      .send('taskId=1')
+      .send('todoId=1&taskId=1')
       .expect(200)
-      .expect('Content-Type', 'application/json', done);
-  });
-  it('should post todo id and task id to change a task status', done => {
-    sinon.replace(fs, 'readFileSync', () => {
-      return '[{"title": "venkatesh","id": 1,"tasks": [{ "text": "tiger", "done": true, "id": 1 }]}]';
-    });
-    request(App)
-      .post('/editSubTask')
-      .send('taskId=1&subTaskId=1')
-      .expect(200)
-      .expect('Content-Type', 'application/json', done);
+      .expect('Content-Type', /application\/json/, done);
   });
 });

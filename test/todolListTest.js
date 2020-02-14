@@ -3,67 +3,67 @@ const assert = require('assert');
 const { Todo } = require('../lib/todoList');
 
 describe('TODO class', () => {
-  describe('getNextTaskId', () => {
+  describe('getNextTodoId', () => {
     it('should give id 1 if no content is present', () => {
       const todoList = [];
       const todo = new Todo(todoList);
-      assert.strictEqual(todo.getNextTaskId(), 1);
+      assert.strictEqual(todo.getNextTodoId(), 1);
     });
   });
   describe('toJSON', () => {
     it('should stringify the content', () => {
-      const text = [{ id: 1 }];
-      const todo = new Todo(text);
+      const title = [{ id: 1 }];
+      const todo = new Todo(title);
       assert.strictEqual(todo.toJSON(), '[{"id":1}]');
     });
   });
-  describe('addNewTask', () => {
-    it('should add the new task to the todoList', () => {
+  describe('addTodo', () => {
+    it('should add new Todo to the todoList', () => {
       const todoList = [];
       const todo = new Todo(todoList);
-      todo.addNewTask('VikramVenky');
-      assert.deepStrictEqual(todo.todoList, [
+      todo.addTodo('VikramVenky');
+      assert.deepStrictEqual(todo.list, [
         { title: 'VikramVenky', id: 1, tasks: [] }
       ]);
     });
   });
-  describe('removeTask', () => {
-    it('should remove the task from the todoList', () => {
+  describe('removeTodo', () => {
+    it('should remove the todo from the todoList', () => {
       const todoList = [{ id: 1 }];
       const todo = new Todo(todoList);
-      todo.removeTask(1);
+      todo.removeTodo(1);
       assert.deepStrictEqual(todo.todoList, []);
     });
   });
-  describe('addSubTask', () => {
-    it('should add the subTask to the todoList', () => {
+  describe('addTask', () => {
+    it('should add task to the todoList', () => {
       const todoList = [{ id: 1, tasks: [] }];
       const todo = new Todo(todoList);
-      const actual = todo.addSubTask('VikramVenky', 1);
+      const actual = todo.addTask('VikramVenky', 1);
       assert.deepStrictEqual(actual, {
         id: 1,
-        tasks: [{ id: 1, text: 'VikramVenky', done: false }]
+        tasks: [{ id: 1, title: 'VikramVenky', done: false }]
       });
     });
   });
-  describe('removeSubTask', () => {
-    it('should remove the subTask from the todoList', () => {
+  describe('removeTask', () => {
+    it('should remove tasks from the todoList', () => {
       const todoList = [
         {
           id: 1,
-          tasks: [{ id: 1, text: 'VikramVenky', done: false }]
+          tasks: [{ id: 1, title: 'VikramVenky', done: false }]
         }
       ];
       const todo = new Todo(todoList);
-      const actual = todo.removeSubTask(1, 1);
+      const actual = todo.removeTask(1, 1);
       assert.deepStrictEqual(actual, { id: 1, tasks: [] });
     });
   });
-  describe('editTask', () => {
-    it('should edit the task from the todoList', () => {
+  describe('editTodo', () => {
+    it('should edit the todo from the todoList', () => {
       const todoList = [{ id: 1, title: 'VikramVenky', tasks: [] }];
       const todo = new Todo(todoList);
-      const actual = todo.editTask(1, 'VenkyVikram');
+      const actual = todo.editTodo(1, 'VenkyVikram');
       assert.deepStrictEqual(actual, {
         id: 1,
         title: 'VenkyVikram',
@@ -71,35 +71,35 @@ describe('TODO class', () => {
       });
     });
   });
-  describe('editSubTask', () => {
-    it('should edit the subTask from task in the todoList', () => {
+  describe('editTask', () => {
+    it('should edit the tasks from task in the todoList', () => {
       const todoList = [
         {
           id: 1,
-          tasks: [{ id: 1, text: 'VikramVenky', done: false }]
+          tasks: [{ id: 1, title: 'VikramVenky', done: false }]
         }
       ];
       const todo = new Todo(todoList);
-      const actual = todo.editSubTask(1, 1, 'VenkyVikram');
+      const actual = todo.editTask(1, 1, 'VenkyVikram');
       assert.deepStrictEqual(actual, {
         id: 1,
-        tasks: [{ id: 1, text: 'VenkyVikram', done: false }]
+        tasks: [{ id: 1, title: 'VenkyVikram', done: false }]
       });
     });
   });
   describe('toggleStatus', () => {
-    it('should toggle the done status for the subTask', () => {
+    it('should toggle the done status for the tasks', () => {
       const todoList = [
         {
           id: 1,
-          tasks: [{ id: 1, text: 'VikramVenky', done: false }]
+          tasks: [{ id: 1, title: 'VikramVenky', done: false }]
         }
       ];
       const todo = new Todo(todoList);
       const actual = todo.toggleStatus(1, 1);
       assert.deepStrictEqual(actual, {
         id: 1,
-        tasks: [{ id: 1, text: 'VikramVenky', done: true }]
+        tasks: [{ id: 1, title: 'VikramVenky', done: true }]
       });
     });
   });
