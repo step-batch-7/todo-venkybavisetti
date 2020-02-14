@@ -68,35 +68,35 @@ describe('POST', () => {
     sinon.restore();
   });
 
-  it('should post the title to add', done => {
+  it('should add new todo in todo list', done => {
     request(app)
       .post('/addTodo')
       .send('title=newTodo')
       .expect(200)
       .expect('Content-Type', /application\/json/, done);
   });
-  it('should post the id to delete', done => {
+  it('should delete a particular todo from todoList', done => {
     request(app)
       .post('/removeTodo')
       .send('id=2')
       .expect(200)
       .expect('Content-Type', /application\/json/, done);
   });
-  it('should post the todo id and task to add new task to a todo', done => {
+  it('should add task on a particular todo in todoList', done => {
     request(app)
       .post('/addTask')
       .send('id=1&task=hii')
       .expect(200)
       .expect('Content-Type', /application\/json/, done);
   });
-  it('should post todo id and task id to change a task status', done => {
+  it('should change status of given task', done => {
     request(app)
       .post('/toggleDone')
       .send('todoId=1&taskId=1')
       .expect(200)
       .expect('Content-Type', /application\/json/, done);
   });
-  it('should post todo id and task id to delete a task from a todo', done => {
+  it('should delete a task from todo', done => {
     request(app)
       .post('/removeTask')
       .send('todoId=1&taskId=2')
@@ -104,17 +104,17 @@ describe('POST', () => {
       .expect('Content-Type', /application\/json/, done);
   });
 
-  it('should post todo id and task id to change a task status', done => {
+  it('should change the title of given todo', done => {
     request(app)
       .post('/editTodo')
-      .send('todoId=1')
+      .send('todoId=1&title="vikram"')
       .expect(200)
       .expect('Content-Type', /application\/json/, done);
   });
-  it('should post todo id and task id to change a task status', done => {
+  it('should change title of given task in particular todo', done => {
     request(app)
       .post('/editTask')
-      .send('todoId=1&taskId=1')
+      .send('todoId=1&taskId=1&subTitle="vikram"')
       .expect(200)
       .expect('Content-Type', /application\/json/, done);
   });
