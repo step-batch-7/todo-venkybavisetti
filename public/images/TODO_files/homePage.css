@@ -1,0 +1,140 @@
+img {
+  cursor: pointer;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+.bodyHeader {
+  background-color: black;
+  padding: 30px 40px;
+  color: white;
+}
+
+.bodyHeader > h2 {
+  text-align: center;
+}
+
+.searchBar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.search {
+  height: 2vw;
+  width: 25vw;
+  background-color: white;
+  border-radius: 1vw;
+}
+
+.search > input {
+  margin-top: 0.12vw;
+  margin-left: 1vw;
+  outline: none;
+  border: none;
+  width: 85%;
+  font-size: 1.2vw;
+  font-weight: 250;
+}
+
+.search > img {
+  height: 1.4vw;
+  width: 6%;
+  vertical-align: sub;
+}
+
+#todoInput {
+  width: 75%;
+  padding: 10px;
+  font-size: 16px;
+  border: 0px;
+}
+
+#addTitle {
+  width: 20%;
+  padding: 10px;
+  font-size: 16px;
+  background-color: gray;
+  border: 0px;
+  cursor: pointer;
+}
+
+#container {
+  height: 590px;
+  border-radius: 5px;
+  border: 2px solid black;
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#smartContainer {
+  height: 590px;
+  width: 20%;
+  border-radius: 3px;
+  border-right: 1px solid black;
+}
+
+#todoAnimation {
+  height: 24%;
+  border-bottom: black solid 1px;
+  border-radius: 5px;
+}
+
+.animationOfText {
+  color: white;
+  font-size: 60px;
+  letter-spacing: 6px;
+  margin-bottom: 20px;
+  position: relative;
+  color: black;
+  animation: text 3s 1;
+}
+
+@keyframes text {
+  0% {
+    font-size: small;
+  }
+  30% {
+    letter-spacing: 25px;
+    color: black;
+    font-size: small;
+  }
+
+  80% {
+    color: black;
+    letter-spacing: 8px;
+  }
+}
+
+#onlyTitles {
+  height: 76%;
+  overflow: scroll;
+}
+#titleHeaderOfContainer {
+  border: 1px solid black;
+  margin: 0px;
+  background-color: grey;
+  text-align: center;
+  border-radius: 10px;
+}
+#titleContainer {
+  list-style-type: none;
+  cursor: pointer;
+  position: relative;
+  padding: 5px;
+  margin: 0;
+}
+
+.titleListDisplay {
+  white-space: nowrap;
+  margin: 6px;
+  outline: none;
+  overflow-x: scroll;
+  border-radius: 5px;
+  display: flex;
+  font-size: medium;
+  justify-content: space-between;
+  background-color: #eeeeee;
+}

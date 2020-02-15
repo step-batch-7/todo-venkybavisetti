@@ -1,11 +1,8 @@
-const statusCode = { ok: 200, redirected: 401 };
+const statusCode = { ok: 200 };
 
 const postHttpMsg = function(url, callback, message) {
   const req = new XMLHttpRequest();
   req.onload = function() {
-    if (this.status === statusCode.redirected) {
-      window.location.href = '/login.html';
-    }
     if (this.status === statusCode.ok) {
       callback(JSON.parse(this.responseText));
     }
@@ -18,9 +15,6 @@ const postHttpMsg = function(url, callback, message) {
 const getHttpMsg = function(url, callback) {
   const req = new XMLHttpRequest();
   req.onload = function() {
-    if (this.status === statusCode.redirected) {
-      window.location.href = '/login.html';
-    }
     if (this.status === statusCode.ok) {
       callback(JSON.parse(this.responseText));
     }
