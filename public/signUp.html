@@ -3,21 +3,23 @@
 
 <head>
   <title>signUp</title>
-  <link rel="stylesheet" href="./css/signUp.css">
+  <script src="js/signUp.js"></script>
+  <script src="js/request.js"></script>
+  <link rel="stylesheet" href="css/signUp.css">
 </head>
 
 <body>
   <div class="signUpPage">
     <div class="signUpBox">
       <p>SignUp :</p>
-      <form action="login.html" method="POST">
+      <form action="signUp" method="POST">
         <label for="name">Name :-</label>
         <br>
         <input type="text" name="name" id="name" required><br>
         <label for="userName">User Name :-</label>
         <br>
 
-        <input type="text" name="userName" id="userName" required><br>
+        <input type="text" name="userName" id="userName" oninput="isUserNameExists()" required><br>
         <label for="password">Enter Password :-</label>
         <br>
 
@@ -26,7 +28,7 @@
         <br>
 
         <input type="date" name="DOB" id="DOB" required>
-        <button>Sign Up</button>
+        <button type="submit" id="submit">Sign Up</button>
       </form>
       <div class="logIn">
         <a href="./login.html">Already Have an Account?</a>

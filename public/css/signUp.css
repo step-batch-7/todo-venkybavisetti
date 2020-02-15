@@ -49,6 +49,10 @@ p {
   color: black;
 }
 
+.signUpBox button:hover {
+  transform: scale(1.05);
+}
+
 .signUpPage {
   font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
   width: 100vw;
