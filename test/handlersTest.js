@@ -197,7 +197,9 @@ describe('Sessions', () => {
     it('should store the user details', done => {
       request(app)
         .post('/signUp')
-        .send('name="venky"&userName="venky"&password="1234"&DOB=01-01-2000')
+        .send(
+          'name="venky"&userName="venky"&password="1234"&mailId=vikram@gmail.com'
+        )
         .expect(302)
         .expect('Found. Redirecting to /login.html')
         .expect('Content-type', /text\/plain/, done);

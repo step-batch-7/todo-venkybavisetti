@@ -70,35 +70,23 @@ body {
 }
 
 #container {
-  height: 590px;
-  border-radius: 5px;
+  height: 76%;
   border: 2px solid black;
-  margin-top: 5px;
   display: flex;
   justify-content: space-evenly;
 }
 
-#smartContainer {
-  height: 590px;
+#userTodo {
+  height: 100%;
   width: 20%;
-  border-radius: 3px;
-  border-right: 1px solid black;
+  border-right: 1px solid;
 }
 
-#todoAnimation {
-  height: 24%;
-  border-bottom: black solid 1px;
-  border-radius: 5px;
-}
-
-.animationOfText {
-  color: white;
-  font-size: 60px;
-  letter-spacing: 6px;
-  margin-bottom: 20px;
-  position: relative;
-  color: black;
-  animation: text 3s 1;
+#userTitle {
+  font-size: 1.3vw;
+  text-align: center;
+  margin-top: 0.5vw;
+  height: 2vw;
 }
 
 @keyframes text {
@@ -127,6 +115,7 @@ body {
   background-color: grey;
   text-align: center;
   border-radius: 10px;
+  font-size: 1vw;
 }
 #titleContainer {
   list-style-type: none;

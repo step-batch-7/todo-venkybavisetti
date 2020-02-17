@@ -1,8 +1,7 @@
 .wrongLogin {
   position: absolute;
   right: 1vw;
-
-  right: 1vw;
+  top: 2vw;
 }
 .wrongLogin > p {
   font-size: 1.1vw;
@@ -24,8 +23,8 @@
   right: 0;
   bottom: 0;
   left: 0;
-  width: 25vw;
-  height: 30vw;
+  width: 18vw;
+  height: 22vw;
   border: 0.1vw solid;
   font-size: 1.5vw;
   font-weight: 100;
@@ -42,47 +41,34 @@
 
 .userName * p {
   margin-left: 0.5vw;
-  margin-top: 1.5vw;
-  margin-bottom: 0;
+  margin-top: 2vw;
+  margin-bottom: 0.5vw;
 }
 
 .userName * input {
   width: 90%;
-  margin: 0.5vw;
   outline: none;
-  font-size: 2vw;
-  font-weight: 100;
+  font-size: 1.2vw;
+  font-weight: 300;
+  margin-left: 0.4vw;
 }
 
 .userName * button {
   width: 90%;
   margin-left: 0.7vw;
   margin-top: 1.5vw;
-  margin-bottom: 0.7vw;
   cursor: pointer;
-  height: 3vw;
+  height: 2vw;
   font-size: 1.5vw;
   border-radius: 0.5vw;
   background-color: #4cce4c;
   color: black;
 }
 
-.userName > a {
-  text-decoration: none;
-  margin-left: 9vw;
-}
-
 .userName button:hover {
   transform: scale(1.05);
 }
 
-.userName a:hover {
-  text-decoration: underline;
-}
-
-.signUp {
-  margin-top: 2vw;
-}
 .signUp:hover {
   transform: scale(1.1);
 }
@@ -95,5 +81,5 @@
   margin-top: 1.5vw;
   text-decoration: none;
   color: black;
-  margin-left: 7vw;
+  margin-left: 4vw;
 }

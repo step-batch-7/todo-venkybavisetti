@@ -11,8 +11,8 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
-  width: 25vw;
-  height: 40vw;
+  width: 21vw;
+  height: 35vw;
   border: 0.1vw solid;
   font-size: 1.5vw;
   font-weight: 100;
@@ -27,7 +27,7 @@ p {
 .signUpBox input {
   width: 90%;
   margin-left: 0.7vw;
-  margin-top: 1.5vw;
+  margin-top: 0.5vw;
   margin-bottom: 0.7vw;
   cursor: pointer;
   height: 2vw;
@@ -40,7 +40,6 @@ p {
   width: 90%;
   margin-left: 0.7vw;
   margin-top: 1.5vw;
-  margin-bottom: 0.7vw;
   cursor: pointer;
   height: 3vw;
   font-size: 1.5vw;
@@ -72,8 +71,7 @@ p {
   border: none;
   outline: none;
   width: 100%;
-  margin-top: 1.5vw;
   text-decoration: none;
   color: black;
-  margin-left: 4vw;
+  margin-left: 1.5vw;
 }
