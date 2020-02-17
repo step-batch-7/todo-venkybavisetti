@@ -8,10 +8,14 @@ const sessions = [
   {
     userName: 'bcalm',
     SID: 1
-  }
+  },
+  { userName: 'venkatesh', SID: 2 }
 ];
 
-const userList = [{ userName: 'bcalm', password: '1234' }];
+const userList = [
+  { userName: 'bcalm', password: '1234' },
+  { userName: 'venkatesh', password: '1234' }
+];
 
 afterEach(() => {
   sinon.restore();
@@ -80,6 +84,14 @@ describe('GET', () => {
       .set('Accept', '*/*')
       .expect(200)
       .expect(/Test Todo/)
+      .expect('Content-Type', /application\/json/, done);
+  });
+  it('should also get loadHomePage if userTodo is not present in userList', done => {
+    request(app)
+      .get('/user/loadHomePage')
+      .set('cookie', 'SID=2')
+      .set('Accept', '*/*')
+      .expect(200)
       .expect('Content-Type', /application\/json/, done);
   });
 });
@@ -182,6 +194,7 @@ describe('Invalid user', () => {
       .post('/logIn')
       .send('userName=bcalm&password=1222')
       .expect(302)
+      .expect('Found. Redirecting to /login.html')
       .expect('Content-type', /text\/plain/, done);
   });
 });
@@ -192,7 +205,39 @@ describe('logIn', () => {
       .post('/logIn')
       .send('userName=bcalm&password=1234')
       .expect(302)
+      .expect('Found. Redirecting to /index.html')
       .expect('set-cookie', /SID/)
       .expect('Content-type', /text\/plain/, done);
+  });
+});
+
+describe('signUp', () => {
+  it('should store the user details', done => {
+    request(app)
+      .post('/signUp')
+      .send('name="venky"&userName="venky"&password="1234"&DOB=01-01-2000')
+      .expect(302)
+      .expect('Found. Redirecting to /login.html')
+      .expect('Content-type', /text\/plain/, done);
+  });
+});
+
+describe('checkUserExist', () => {
+  it('should give true if userName is exist', done => {
+    request(app)
+      .post('/checkUserExists')
+      .send('userName=bcalm')
+      .expect(200)
+      .expect(/true/)
+      .expect('Content-type', /application\/json/, done);
+  });
+
+  it('should give false if userName is not exist', done => {
+    request(app)
+      .post('/checkUserExists')
+      .send('userName=venky')
+      .expect(200)
+      .expect(/false/)
+      .expect('Content-type', /application\/json/, done);
   });
 });

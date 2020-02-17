@@ -70,6 +70,16 @@ describe('TODO class', () => {
         tasks: []
       });
     });
+    it('should not change the todo if new title is empty', () => {
+      const todoList = [{ id: 1, title: 'VikramVenky', tasks: [] }];
+      const todo = new Todo(todoList);
+      const actual = todo.editTodo(1, '');
+      assert.deepStrictEqual(actual, {
+        id: 1,
+        title: 'VikramVenky',
+        tasks: []
+      });
+    });
   });
   describe('editTask', () => {
     it('should edit the tasks from task in the todoList', () => {
