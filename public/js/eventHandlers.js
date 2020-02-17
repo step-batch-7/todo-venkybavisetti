@@ -5,7 +5,7 @@ const addTodo = function() {
   if (todoTitle === '') {
     return;
   }
-  postHttpMsg('/addTodo', generateTodoTasks, `title=${todoTitle}`);
+  postHttpMsg('/user/addTodo', generateTodoTasks, `title=${todoTitle}`);
 };
 
 const addTask = function(id) {
@@ -14,7 +14,7 @@ const addTask = function(id) {
     return;
   }
   postHttpMsg(
-    '/addTask',
+    '/user/addTask',
     generateParticularTodo,
     `task=${task.value}&id=${id}`
   );
@@ -22,12 +22,12 @@ const addTask = function(id) {
 };
 
 const removeTodo = function(id) {
-  postHttpMsg('/removeTodo', generateTodoTasks, `id=${id}`);
+  postHttpMsg('/user/removeTodo', generateTodoTasks, `id=${id}`);
 };
 
 const removeTask = function(todoId, taskId) {
   postHttpMsg(
-    '/removeTask',
+    '/user/removeTask',
     generateParticularTodo,
     `todoId=${todoId}&taskId=${taskId}`
   );
@@ -36,7 +36,7 @@ const removeTask = function(todoId, taskId) {
 const editTodo = function(todoId) {
   const newTodoTitle = event.target.innerText;
   postHttpMsg(
-    '/editTodo',
+    '/user/editTodo',
     editTaskTitle,
     `todoId=${todoId}&title=${newTodoTitle}`
   );
@@ -45,7 +45,7 @@ const editTodo = function(todoId) {
 const editTask = function(todoId, taskId) {
   const newTaskName = event.target.innerText;
   postHttpMsg(
-    '/editTask',
+    '/user/editTask',
     generateParticularTodo,
     `todoId=${todoId}&taskId=${taskId}&subTitle=${newTaskName}`
   );
@@ -53,12 +53,12 @@ const editTask = function(todoId, taskId) {
 
 const toggleDone = function(todoId, taskId) {
   postHttpMsg(
-    '/toggleDone',
+    '/user/toggleDone',
     generateParticularTodo,
     `todoId=${todoId}&taskId=${taskId}`
   );
 };
 
 const loadHomePage = function() {
-  getHttpMsg('/loadHomePage', generateTodoTasks);
+  getHttpMsg('/user/loadHomePage', generateTodoTasks);
 };
