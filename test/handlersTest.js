@@ -3,7 +3,7 @@ const request = require('supertest');
 const sinon = require('sinon');
 const { app } = require('../lib/route');
 const fs = require('fs');
-
+const todoList = require('./testTodoList.json');
 const sessions = [
   {
     userName: 'bcalm',
@@ -11,37 +11,17 @@ const sessions = [
   }
 ];
 
-const todoList = {
-  venky: [
-    {
-      title: 'Test Todo',
-      id: 1,
-      tasks: [
-        {
-          title: 'Test Task',
-          id: 1,
-          done: true
-        }
-      ]
-    }
-  ],
-  bcalm: [
-    {
-      title: 'Test Todo',
-      id: 1,
-      tasks: [
-        {
-          title: 'Test Task',
-          id: 1,
-          done: true
-        }
-      ]
-    }
-  ]
-};
+const userList = [{ userName: 'bcalm', password: '1234' }];
+
+afterEach(() => {
+  sinon.restore();
+});
+
 beforeEach(() => {
+  sinon.replace(fs, 'writeFileSync', () => {});
   app.locals.todoList = todoList;
   app.locals.sessions = sessions;
+  app.locals.userList = userList;
 });
 
 describe('FILE NOT FOUND', () => {
@@ -105,14 +85,6 @@ describe('GET', () => {
 });
 
 describe('POST', () => {
-  before(() => {
-    sinon.replace(fs, 'writeFileSync', () => {});
-  });
-
-  after(() => {
-    sinon.restore();
-  });
-
   it('should delete a task from todo', done => {
     request(app)
       .post('/user/removeTask')
@@ -171,5 +143,56 @@ describe('POST', () => {
       .send('todoId=1&title="vikram"')
       .expect(200)
       .expect('Content-Type', /application\/json/, done);
+  });
+});
+
+describe('NOT AUTHORIZED', () => {
+  it('should give not authorized if user have not cookie', done => {
+    request(app)
+      .get('/user/loadHomePage')
+      .set('Accept', '*/*')
+      .expect(401)
+      .expect('Content-Type', /text\/html/, done);
+  });
+
+  it('should give not authorized if user has invalid cookie', done => {
+    request(app)
+      .get('/user/loadHomePage')
+      .set('Accept', '*/*')
+      .set('cookie', 'SID=12')
+      .expect(401)
+      .expect('Content-Type', /text\/html/, done);
+  });
+});
+
+describe('Bad Request', () => {
+  it('should give bad request if user have not all fields which is needed for particular handler', done => {
+    request(app)
+      .post('/user/removeTask')
+      .set('cookie', 'SID=1')
+      .send('todoId=1&taskI=2')
+      .expect(400)
+      .expect('Content-Type', /text\/html/, done);
+  });
+});
+
+describe('Invalid user', () => {
+  it('should not log in the user if has invalid username or password', done => {
+    request(app)
+      .post('/logIn')
+      .send('userName=bcalm&password=1222')
+      .expect(302)
+      .expect('Content-type', /text\/plain/, done);
+  });
+});
+
+describe('logIn', () => {
+  it('should set cookie and redirect to index.html if user is valid', done => {
+    request(app)
+      .post('/logIn')
+      .send('userName=bcalm&password=1234')
+      .expect(302)
+      .expect('set-cookie', /SID/)
+      .expect('Content-type', /text\/plain/, done);
   });
 });
