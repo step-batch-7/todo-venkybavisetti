@@ -40,4 +40,7 @@ Pairing:
 --done--* changing ui of displaying task container.
 --done--* delete tags class like p,ul, li and merge with div classes.
 --done--* Search by subTask.
---working-- change server module http to express.
+--done-- change server module http to express.
+* implement logout feature.
+* show userName or password is incorrect.
+* change font size of login page

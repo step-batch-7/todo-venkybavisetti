@@ -19,6 +19,7 @@ body {
 .searchBar {
   display: flex;
   justify-content: space-between;
+  margin-top: 2.3vw;
 }
 
 .search {
@@ -26,6 +27,14 @@ body {
   width: 25vw;
   background-color: white;
   border-radius: 1vw;
+}
+
+#searchTask {
+  display: none;
+}
+
+#searchOption {
+  margin: 1vw;
 }
 
 .search > input {
@@ -137,4 +146,21 @@ body {
   font-size: medium;
   justify-content: space-between;
   background-color: #eeeeee;
+}
+
+#logOut {
+  height: 2vw;
+  width: 4vw;
+  position: absolute;
+  right: 1.5vw;
+  top: 1.2vw;
+}
+
+#logOut:hover {
+  transform: scale(1.1);
+}
+
+#logOut > img {
+  height: 100%;
+  width: 100%;
 }

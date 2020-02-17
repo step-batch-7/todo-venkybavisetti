@@ -62,3 +62,7 @@ const toggleDone = function(todoId, taskId) {
 const loadHomePage = function() {
   getHttpMsg('/user/loadHomePage', generateTodoTasks);
 };
+
+const logOut = function() {
+  getHttpMsg('/user/logOut');
+};
