@@ -241,3 +241,12 @@ describe('checkUserExist', () => {
       .expect('Content-type', /application\/json/, done);
   });
 });
+
+describe('logOut', () => {
+  it('should clear user cookie and redirect to login page', done => {
+    request(app)
+      .get('/user/logOut')
+      .set('cookie', 'SID=1')
+      .expect(302, done);
+  });
+});
