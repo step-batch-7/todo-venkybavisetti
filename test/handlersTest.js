@@ -193,9 +193,9 @@ describe('Invalid user', () => {
     request(app)
       .post('/logIn')
       .send('userName=bcalm&password=1222')
-      .expect(302)
-      .expect('Found. Redirecting to /login.html')
-      .expect('Content-type', /text\/plain/, done);
+      .expect(200)
+      .expect(/Incorrect UserName/)
+      .expect('Content-type', /text\/html/, done);
   });
 });
 

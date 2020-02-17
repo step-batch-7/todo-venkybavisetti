@@ -1,3 +1,14 @@
+.wrongLogin {
+  position: absolute;
+  right: 1vw;
+
+  right: 1vw;
+}
+.wrongLogin > p {
+  font-size: 1.1vw;
+  color: red;
+}
+
 .logInPage {
   font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
   width: 100vw;
@@ -6,7 +17,7 @@
 }
 
 .login {
-  position: absolute;
+  position: fixed;
   background-color: white;
   margin: auto;
   top: 0;
