@@ -31,6 +31,10 @@
   border-radius: 0.8vw;
 }
 
+.login:hover {
+  box-shadow: 5px 5px 5px grey;
+}
+
 .header {
   margin: 1vw;
 }

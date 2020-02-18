@@ -84,7 +84,7 @@ body {
 }
 
 #userTitle {
-  font-size: 1.3vw;
+  font-weight: 900;
   text-align: center;
   margin-top: 0.5vw;
   height: 2vw;
@@ -94,12 +94,35 @@ body {
   height: 94%;
   overflow: scroll;
 }
+
+.animationOfText {
+  font-size: 1.2vw;
+  letter-spacing: 0.2vw;
+  margin-bottom: 1vw;
+  position: relative;
+  color: red;
+  animation: text 3s 1;
+}
+
+@keyframes text {
+  0% {
+    font-size: small;
+  }
+  30% {
+    letter-spacing: 2vw;
+    font-size: small;
+  }
+
+  70% {
+    letter-spacing: 0.3vw;
+  }
+}
 #titleHeaderOfContainer {
   border: 1px solid black;
   margin: 0px;
   background-color: grey;
   text-align: center;
-  border-radius: 10px;
+  border-radius: 0.5vw;
   font-size: 1vw;
 }
 #titleContainer {
