@@ -8,7 +8,7 @@
     "lint": "eslint *.js lib/*.js test/*.js public/js/*.js",
     "cover": "nyc npm test",
     "alltests": "npm run cover && npm run lint",
-    "start": "export DATA_STORE='data/todoList.json'; node server.js"
+    "start": "export DATA_STORE='./data/todoList.json'; node server.js"
   },
   "repository": {
     "type": "git",

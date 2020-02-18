@@ -10,6 +10,11 @@ const userList = [
   { userName: 'bcalm', password: '1234' },
   { userName: 'venkatesh', password: '1234' }
 ];
+
+afterEach(() => {
+  sinon.restore();
+});
+
 describe('Sessions', () => {
   beforeEach(() => {
     sinon.replace(fs, 'writeFileSync', () => {});
@@ -23,10 +28,6 @@ describe('Sessions', () => {
     sinon.replace(sessions, 'isValidSession', isValidSession);
     sinon.replace(sessions, 'createSession', createSession);
     sinon.replace(sessions, 'removeSession', sinon.fake());
-  });
-
-  afterEach(() => {
-    sinon.restore();
   });
 
   describe('FILE NOT FOUND', () => {

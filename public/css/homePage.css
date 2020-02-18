@@ -4,6 +4,7 @@ img {
 
 body {
   font-family: sans-serif;
+  margin: 0px;
 }
 
 .bodyHeader {
@@ -89,24 +90,8 @@ body {
   height: 2vw;
 }
 
-@keyframes text {
-  0% {
-    font-size: small;
-  }
-  30% {
-    letter-spacing: 25px;
-    color: black;
-    font-size: small;
-  }
-
-  80% {
-    color: black;
-    letter-spacing: 8px;
-  }
-}
-
 #onlyTitles {
-  height: 76%;
+  height: 94%;
   overflow: scroll;
 }
 #titleHeaderOfContainer {

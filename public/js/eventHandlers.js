@@ -8,17 +8,22 @@ const addTodo = function() {
   postHttpMsg('/user/addTodo', generateTodoTasks, `title=${todoTitle}`);
 };
 
-const addTask = function(id) {
-  const task = event.target.parentElement.previousSibling.previousSibling;
-  if (task.value === '') {
-    return;
+const addTodoOnEnter = function() {
+  if (event.key === 'Enter') {
+    addTodo();
   }
-  postHttpMsg(
-    '/user/addTask',
-    generateParticularTodo,
-    `task=${task.value}&id=${id}`
-  );
-  task.value = '';
+};
+
+const addTask = function(id) {
+  const task = event.target.value;
+  if (event.key === 'Enter' && task) {
+    postHttpMsg(
+      '/user/addTask',
+      generateParticularTodo,
+      `task=${task}&id=${id}`
+    );
+    event.target.value = '';
+  }
 };
 
 const removeTodo = function(id) {

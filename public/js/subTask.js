@@ -48,7 +48,6 @@ const getTasksList = function(todo) {
     task.done ? taskList.push(taskHtml) : taskList.unshift(taskHtml);
     return taskList;
   };
-  console.log(todo);
   return todo.tasks.reduce(taskHtml, []).join('');
 };
 
@@ -59,21 +58,15 @@ const createTask = function(todo) {
   return convertHtmlToNode(taskHtml);
 };
 
-const addButton = function(taskId) {
-  return `<button onclick="addTask(${taskId})" class="taskButton">
-    <img src="images/add.svg" height="30px" />
-  </button>`;
-};
-
 const addNewTask = function(task) {
   const taskAdderHtml = `<div class="taskAdder">
   <input 
     type="text" 
+    onkeypress="addTask(${task.id})"
     name="title" 
     class="taskInput" 
     placeholder="Tasks..."
   />
-  ${addButton(task.id)}
 </div>`;
   return convertHtmlToNode(taskAdderHtml);
 };

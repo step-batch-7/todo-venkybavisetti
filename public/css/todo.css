@@ -1,7 +1,7 @@
 #taskContainer {
   display: flex;
   flex-wrap: wrap;
-  height: 590px;
+  height: 100%;
   width: 80%;
   overflow: scroll;
 }
@@ -11,38 +11,31 @@
   height: 30vw;
   width: 20vw;
   margin: 2.8vw;
-  border-radius: 5px;
-  padding: 4px;
+  border-radius: 0.3vw;
+  padding: 0.3vw;
   position: relative;
   cursor: pointer;
-}
-
-.titleName {
-  width: 650px;
-  background-color: transparent;
-  border: 0px;
-  font-size: 42px;
-  margin-top: 12px;
 }
 
 .statusBar {
   display: flex;
   justify-content: center;
-  margin: 1vw;
+  margin: 0.5vw;
 }
 
 .totalTasks,
 .totalTasksInParticularTask,
 .tasksDone,
 .tasksNotDone {
-  height: 20px;
-  border-radius: 20px;
-  padding: 5px;
+  height: 1vw;
+  font-size: 1vw;
+  border-radius: 1vw;
+  padding: 0.2vw;
 }
 
 .totalTasks {
   background-color: darkgray;
-  width: 150px;
+  width: 8vw;
 }
 
 .tasksDone {
@@ -53,7 +46,8 @@
 }
 
 .tasksDone > img {
-  height: 20px;
+  height: 1vw;
+  margin-top: 0.1vw;
 }
 
 .tasksDone > p {
@@ -67,7 +61,8 @@
 }
 
 .tasksNotDone > img {
-  height: 17px;
+  height: 0.9vw;
+  margin-top: 0.2vw;
 }
 
 .tasksNotDone > p {
@@ -75,11 +70,10 @@
 }
 
 .allHeaders {
-  font-size: 25px;
+  font-size: 1.5vw;
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid black;
-  border-radius: 5px;
 }
 
 ::-webkit-scrollbar {
@@ -95,11 +89,12 @@
 }
 
 .allHeaders > img {
-  height: 30px;
+  height: 2vw;
 }
 
 .taskAdder {
   display: flex;
+  height: 1.8vw;
   justify-content: center;
 }
 
@@ -109,14 +104,18 @@
 
 .taskButton {
   background-color: gray;
-  border-radius: 5px;
+  border-radius: 0.3vw;
+}
+
+.taskButton > img {
+  height: 1.3vw;
 }
 .taskInput {
   padding: 10px;
   width: 95%;
   border: 0px;
   border-bottom: 1px solid black;
-  border-radius: 5px;
+  border-radius: 0.3vw;
   background-color: rgb(250, 253, 253);
 }
 
@@ -137,14 +136,14 @@
 
 .unCheckedClass,
 .checkedClass {
-  border-radius: 5px;
+  border-radius: 0.1vw;
   position: relative;
-  font-size: 20px;
+  font-size: 1.3vw;
   font-weight: 400;
   display: flex;
   justify-content: space-between;
   background-color: #eeeeee;
-  margin: 4px;
+  margin: 0.2vw;
 }
 
 .checkedClass {
@@ -153,7 +152,7 @@
 }
 
 .taskList {
-  height: 19.5vw;
+  height: 22.2vw;
   margin-bottom: 1vw;
   overflow: scroll;
 }

@@ -29,13 +29,15 @@
       </div>
     </div>
     <h2>To Do List</h2>
-    <input type="text" name="title" id="todoInput" placeholder="Title..." />
+    <input type="text" name="title" id="todoInput" placeholder="Title..." onkeypress="addTodoOnEnter()" />
     <button id="addTitle" onclick="addTodo()">Add</button>
   </div>
   <div id="container">
     <div id="userTodo">
       <div id="userTitle">
-        <span> My Todo Work</span>
+        <span>
+          My Todo Work
+        </span>
       </div>
       <div id="onlyTitles">
         <p id="titleHeaderOfContainer">All Lists You Have</p>

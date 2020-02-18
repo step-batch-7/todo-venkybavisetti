@@ -49,6 +49,7 @@ const generateParticularTodo = function(todoDetails) {
   statusBar.innerHTML = '';
   statusBar.innerHTML = getStatusHtml(todoDetails);
   container.innerHTML = todo;
+  container.scrollTop = container.scrollHeight;
 };
 
 const editTodoTitle = function(todo) {

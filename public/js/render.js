@@ -46,7 +46,7 @@ const createTodoTitle = function(todo) {
     ${todo.title}
     <img
       src="images/delete.svg"
-      onclick = 'removeTask(${todo.id})'
+      onclick = 'removeTodo(${todo.id})'
       height ="17px"
     />
   </li>`;
