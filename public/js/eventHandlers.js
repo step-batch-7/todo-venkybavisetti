@@ -65,7 +65,7 @@ const toggleDone = function(todoId, taskId) {
 };
 
 const loadHomePage = function() {
-  getHttpMsg('/user/loadHomePage', generateTodoTasks);
+  getHttpMsg('/user/loadHomePage', setUpHomePage);
 };
 
 const logOut = function() {

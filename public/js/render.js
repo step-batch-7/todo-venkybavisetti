@@ -71,3 +71,9 @@ const generateTodoTasks = function(todoList) {
   setUpTitleContainer(todoList);
   setUpTaskContainer(todoList);
 };
+
+const setUpHomePage = function(todoDetails) {
+  const { userName, todoList } = todoDetails;
+  document.querySelector('#userTitle').innerHTML = `<span>${userName}</span>`;
+  generateTodoTasks(todoList);
+};
