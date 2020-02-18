@@ -42,7 +42,7 @@ const editTodo = function(todoId) {
   const newTodoTitle = event.target.innerText;
   postHttpMsg(
     '/user/editTodo',
-    editTaskTitle,
+    editTodoTitle,
     `todoId=${todoId}&title=${newTodoTitle}`
   );
 };
