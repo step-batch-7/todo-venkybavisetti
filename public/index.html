@@ -1,53 +1,51 @@
 <html>
+  <head>
+    <title>TODO</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/homePage.css" />
+    <link rel="stylesheet" href="css/todo.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <script src="js/eventHandlers.js"></script>
+    <script src="js/render.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/task.js"></script>
+    <script src="js/subTask.js"></script>
+    <script src="js/request.js"></script>
+  </head>
 
-<head>
-  <title>TODO</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
-  <link rel="stylesheet" href="css/homePage.css" />
-  <link rel="stylesheet" href="css/todo.css" />
-  <link rel="stylesheet" href="css/animations.css" />
-  <script src="js/eventHandlers.js"></script>
-  <script src="js/render.js"></script>
-  <script src="js/search.js"></script>
-  <script src="js/task.js"></script>
-  <script src="js/subTask.js"></script>
-  <script src="js/request.js"></script>
-</head>
+  <body onload="loadHomePage()">
+    <div class="bodyHeader">
+      <div id="logOut" onclick="logOut()">
+        <i class="fa fa-sign-out fa-3x" aria-hidden="true" style="color:black"></i>
+      </div>
 
-<body onload="loadHomePage()">
-  <div class="bodyHeader">
-    <div id="logOut" onclick="logOut()">
-      <i class="fa fa-sign-out fa-3x" aria-hidden="true" style="color:white"></i>
-    </div>
-    <div class="searchBar">
-      <div class="search" oninput="searchTodo(event)">
-        <input type="search" id="searchValue" placeholder="Search your Todo here...">
-        <img src="/images/search.svg" alt="searchIcon">
+      <div class="searchBar">
+        <div class="search" oninput="searchTodo(event)">
+          <input type="search" id="searchValue" placeholder="Search your Todo here..." />
+          <img src="/images/search.svg" alt="searchIcon" />
+        </div>
+        <div class="search" oninput="searchTask(event)">
+          <input type="search" id="searchSubTask" placeholder="Search your Task here..." />
+          <img src="/images/search.svg" alt="searchIcon" />
+        </div>
       </div>
-      <div class="search" oninput="searchTask(event)">
-        <input type="search" id="searchSubTask" placeholder="Search your Task here...">
-        <img src="/images/search.svg" alt="searchIcon">
-      </div>
-    </div>
-    <h2>To Do List</h2>
-    <input type="text" name="title" id="todoInput" placeholder="Title..." onkeypress="addTodoOnEnter()" />
-    <button id="addTitle" onclick="addTodo()">Add</button>
-  </div>
-  <div id="container">
-    <div id="userTodo">
-      <div id="userTitle">
-        <span class="animationOfText">
-          My Todo Work
-        </span>
-      </div>
-      <div id="onlyTitles">
-        <p id="titleHeaderOfContainer">All Lists You Have</p>
-        <ul id="titleContainer"></ul>
+      <h2>To Do List</h2>
+      <div class="addTitle">
+        <input
+          type="text"
+          name="title"
+          placeholder="Title..."
+          id="todoInput"
+          onkeypress="addTodoOnEnter()"
+        />
+        <img src="./images/add.svg" alt="" onclick="addTodo" />
       </div>
     </div>
     <div id="taskContainer"></div>
-  </div>
-</body>
-
+  </body>
 </html>

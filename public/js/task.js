@@ -14,7 +14,7 @@ const createDeleteButton = function(id) {
 
 const createTodoHeader = function(todo) {
   const todoHeader = document.createElement('div');
-  todoHeader.className = 'allHeaders';
+  todoHeader.className = 'todoHeader';
   const title = document.createElement('p');
   title.contentEditable = true;
   title.onblur = () => editTodo(todo.id);
@@ -40,12 +40,8 @@ const createTodoList = function(todo) {
 
 const generateParticularTodo = function(todoDetails) {
   const todo = getTasksList(todoDetails);
-  const container = document.querySelector(
-    `[id="${todoDetails.id}"] .taskList`
-  );
-  const statusBar = document.querySelector(
-    `[id="${todoDetails.id}"] .statusBar`
-  );
+  const container = document.querySelector(`[id="${todoDetails.id}"] .taskList`);
+  const statusBar = document.querySelector(`[id="${todoDetails.id}"] .statusBar`);
   statusBar.innerHTML = '';
   statusBar.innerHTML = getStatusHtml(todoDetails);
   container.innerHTML = todo;

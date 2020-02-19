@@ -8,26 +8,28 @@ body {
 }
 
 .bodyHeader {
-  background-color: black;
   padding: 30px 40px;
-  color: white;
+  color: black;
 }
 
 .bodyHeader > h2 {
+  margin: 0vw;
   text-align: center;
+  font-size: 2.3vw;
 }
 
 .searchBar {
+  right: 10%;
+  position: absolute;
   display: flex;
-  justify-content: space-between;
-  margin-top: 2.3vw;
 }
 
 .search {
   height: 2vw;
-  width: 25vw;
+  width: 16vw;
   background-color: white;
-  border-radius: 1vw;
+  border-bottom: 0.1vw solid;
+  margin: 0.1vw;
 }
 
 #searchTask {
@@ -40,109 +42,37 @@ body {
 
 .search > input {
   margin-top: 0.12vw;
-  margin-left: 1vw;
   outline: none;
   border: none;
-  width: 85%;
+  width: 79%;
   font-size: 1.2vw;
   font-weight: 250;
 }
 
 .search > img {
   height: 1.4vw;
-  width: 6%;
+  width: 12%;
   vertical-align: sub;
 }
 
-#todoInput {
-  width: 75%;
-  padding: 10px;
-  font-size: 16px;
-  border: 0px;
-}
-
-#addTitle {
-  width: 20%;
-  padding: 10px;
-  font-size: 16px;
-  background-color: gray;
-  border: 0px;
-  cursor: pointer;
-}
-
-#container {
-  height: 76%;
-  border: 2px solid black;
+.addTitle {
+  position: absolute;
   display: flex;
-  justify-content: space-evenly;
+  top: 1.5vw;
 }
 
-#userTodo {
-  height: 100%;
-  width: 20%;
-  border-right: 1px solid;
+.addTitle > input {
+  width: 15vw;
+  margin-left: 2vw;
+  height: 1.7vw;
+  border: none;
+  border-bottom: 0.1vw solid;
+  font-size: 1.5vw;
 }
 
-#userTitle {
-  font-weight: 900;
-  text-align: center;
-  margin-top: 0.5vw;
-  height: 2vw;
-}
-
-#onlyTitles {
-  height: 94%;
-  overflow: scroll;
-}
-
-.animationOfText {
-  font-size: 1.2vw;
-  letter-spacing: 0.2vw;
-  margin-bottom: 1vw;
-  position: relative;
-  color: red;
-  animation: text 3s 1;
-}
-
-@keyframes text {
-  0% {
-    font-size: small;
-  }
-  30% {
-    letter-spacing: 2vw;
-    font-size: small;
-  }
-
-  70% {
-    letter-spacing: 0.3vw;
-  }
-}
-#titleHeaderOfContainer {
-  border: 1px solid black;
-  margin: 0px;
-  background-color: grey;
-  text-align: center;
-  border-radius: 0.5vw;
-  font-size: 1vw;
-}
-#titleContainer {
-  list-style-type: none;
-  cursor: pointer;
-  position: relative;
-  padding: 5px;
-  margin: 0;
-}
-
-.titleListDisplay {
-  white-space: nowrap;
-  margin: 6px;
-  outline: none;
-  overflow-x: scroll;
-  border-radius: 5px;
-  display: flex;
-  font-size: medium;
-  justify-content: space-between;
-  background-color: #eeeeee;
+.addTitle > img {
+  height: 1.5vw;
+  width: 2vw;
 }
 
 #logOut {

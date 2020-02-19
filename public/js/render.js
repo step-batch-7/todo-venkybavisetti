@@ -66,14 +66,3 @@ const setUpTaskContainer = function(todoList) {
   const allTodo = todoList.map(createTodoList);
   allTodo.forEach(todo => taskContainer.appendChild(todo));
 };
-
-const generateTodoTasks = function(todoList) {
-  setUpTitleContainer(todoList);
-  setUpTaskContainer(todoList);
-};
-
-const setUpHomePage = function(todoDetails) {
-  const { userName, todoList } = todoDetails;
-  document.querySelector('#userTitle span').innerText = userName;
-  generateTodoTasks(todoList);
-};

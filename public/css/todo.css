@@ -1,15 +1,15 @@
 #taskContainer {
   display: flex;
   flex-wrap: wrap;
-  height: 100%;
-  width: 80%;
+  height: 80%;
+  width: 100%;
   overflow: scroll;
 }
 
 .todoBox {
   background-color: rgb(189, 189, 189);
-  height: 30vw;
-  width: 20vw;
+  height: 22vw;
+  width: 18vw;
   margin: 2.8vw;
   border-radius: 0.3vw;
   padding: 0.3vw;
@@ -73,7 +73,7 @@
   margin: 0px;
 }
 
-.allHeaders {
+.todoHeader {
   font-size: 1.5vw;
   display: flex;
   justify-content: space-between;
@@ -84,7 +84,7 @@
   display: none;
 }
 
-.allHeaders > p {
+.todoHeader > p {
   white-space: nowrap;
   margin: 6px;
   outline: none;
@@ -92,8 +92,9 @@
   flex: 90%;
 }
 
-.allHeaders > img {
+.todoHeader > img {
   height: 2vw;
+  align-self: center;
 }
 
 .taskAdder {
@@ -147,7 +148,7 @@
   display: flex;
   justify-content: space-between;
   background-color: #eeeeee;
-  margin: 0.2vw;
+  margin: 0.5vw;
 }
 
 .checkedClass {
@@ -156,7 +157,7 @@
 }
 
 .taskList {
-  height: 22.2vw;
+  height: 13vw;
   margin-bottom: 1vw;
   overflow: scroll;
 }
