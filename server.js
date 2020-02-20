@@ -1,5 +1,5 @@
 const fs = require('fs');
-const defaultPort = 4000;
+const defaultPort = process.env || 4000;
 const { app } = require('./lib/route');
 
 const setUpDataBase = function() {
