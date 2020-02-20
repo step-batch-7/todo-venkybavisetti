@@ -7,7 +7,6 @@
 }
 
 .todoBox {
-  background-color: rgb(189, 189, 189);
   height: 22vw;
   width: 18vw;
   margin: 2.8vw;
@@ -15,6 +14,7 @@
   padding: 0.3vw;
   position: relative;
   cursor: pointer;
+  border: 1px solid;
 }
 
 .todoBox:hover {
@@ -147,7 +147,6 @@
   font-weight: 400;
   display: flex;
   justify-content: space-between;
-  background-color: #eeeeee;
   margin: 0.5vw;
 }
 

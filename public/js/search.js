@@ -1,6 +1,7 @@
 const searchTodo = function(event) {
   const searchInput = event.target.value;
-  const allTodo = selectAll('.allHeaders p');
+  console.log(searchInput);
+  const allTodo = selectAll('.todoHeader p');
   allTodo.forEach(todo => {
     const id = todo.parentElement.parentElement.id;
     getElement(id).style.display = 'none';
@@ -19,9 +20,7 @@ const matchTask = function(task, searchInput) {
 
 const showMatchedTask = function(todo, searchInput) {
   const taskTitle = Array.from(selectAll(`[id="${todo.id}"] li`));
-  const matchedTask = taskTitle.filter(task =>
-    task.innerText.toLowerCase().includes(searchInput)
-  );
+  const matchedTask = taskTitle.filter(task => task.innerText.toLowerCase().includes(searchInput));
   taskTitle.forEach(task => matchTask(task, searchInput));
   getElement(todo.id).style.display = '';
   if (matchedTask.length === 0 && searchInput) {
