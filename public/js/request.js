@@ -1,4 +1,4 @@
-const statusCode = { ok: 200, unauthorized: 401 };
+const statusCode = {ok: 200, unauthorized: 401};
 
 const postHttpMsg = function(url, callback, message) {
   const req = new XMLHttpRequest();
